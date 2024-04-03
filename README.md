@@ -1,0 +1,2 @@
+# translentor
+Translentor WordPress plugin
