@@ -1,0 +1,16 @@
+.elementor-add-translation-button a.edit_translation{
+    background-color: #1d263e;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-style: normal;
+    font-family: 'Roboto',sans-serif;
+    z-index: 999;
+}

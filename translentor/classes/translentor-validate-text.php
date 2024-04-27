@@ -1,0 +1,84 @@
+<?php
+
+class translentor_Check_Invalid_Text{
+    protected $table_charset;
+    protected $check_current_query;
+    protected $col_meta;
+
+    public function get_existing_translations_without_invalid_text( $dictionary, $prepared_query, $strings_array, $language_code, $block_type ){
+        if ( $this->is_invalid_data_error() ){
+            $count = count($strings_array);
+            if ( $count <= 1 ){
+                // fake translated so it doesn't get auto translated or updated in DB later
+                $entry = new stdClass();
+                $entry->translated = $strings_array[0];
+                $entry->original = $strings_array[0];
+                $entry->status = "1";
+                $entry->invalid_data = true;
+                return array( $strings_array[0] => $entry);
+            }else{
+                $translentor = translentor_Translentor::get_translentor_instance();
+                $lang_query = $translentor->get_translentorelements( 'query' );
+
+                $half = floor( $count / 2 );
+
+                $array1 = $lang_query->get_existing_translations( array_slice( $strings_array, 0, $half ), $language_code, $block_type );
+                $array2 = $lang_query->get_existing_translations( array_slice( $strings_array, $half ), $language_code, $block_type );
+                return array_merge( $array1, $array2 );
+            }
+        }
+        return $dictionary;
+    }
+
+    public function insert_translations_without_invalid_text( $new_strings, $language_code, $block_type ){
+        if ( $this->is_invalid_data_error() ){
+            $count = count($new_strings);
+            if ( $count <= 1 ){
+                return;
+            }else{
+                $translentor = translentor_Translentor::get_translentor_instance();
+                $lang_query = $translentor->get_translentorelements( 'query' );
+
+                $half = floor( $count / 2 );
+
+                $lang_query->insert_strings( array_slice( $new_strings, 0, $half ), $language_code, $block_type );
+                $lang_query->insert_strings( array_slice( $new_strings, $half ), $language_code, $block_type );
+                return;
+            }
+        }
+
+    }
+
+    public function update_translations_without_invalid_text( $update_strings, $language_code, $block_type ){
+        if ( $this->is_invalid_data_error() ){
+            $count = count($update_strings);
+            if ( $count <= 1 ){
+                return;
+            }else{
+                $translentor = translentor_Translentor::get_translentor_instance();
+                $lang_query = $translentor->get_translentorelements( 'query' );
+
+                $half = floor( $count / 2 );
+
+                $lang_query->update_strings( array_slice( $update_strings, 0, $half ), $language_code, $block_type );
+                $lang_query->update_strings( array_slice( $update_strings, $half ), $language_code, $block_type );
+                return;
+            }
+        }
+
+    }
+
+    public function is_invalid_data_error(){
+        // Using $translentor_disable_invalid_data_detection as a sort of apply_filters to turn off this feature.
+        // Not using proper WP filter to reduce page load time. This function is executed many times.
+        global $wpdb, $translentor_disable_invalid_data_detection;
+        if ( !empty($wpdb->last_error) && !isset( $translentor_disable_invalid_data_detection) ) {
+            $invalid_data_error = __( 'WordPress database error: Could not perform query because it contains invalid data.' );  /* phpcs:ignore */ /* $domain arg is purposely omitted because we want to identify the exact wpdb last_error message. Only used for comparison reasons, it's not actually displayed. */
+            if ( $wpdb->last_error == $invalid_data_error ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}

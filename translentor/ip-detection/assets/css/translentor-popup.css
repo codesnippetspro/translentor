@@ -1,0 +1,492 @@
+/* @font-face {
+    font-family: dashicons;
+    src: url(/wp-includes/fonts/dashicons.woff),
+    url(/wp-includes/fonts/dashicons.ttf) format("truetype"),
+    url(/wp-includes/fonts/dashicons.svg#dashicons) format("svg"),
+    url(/wp-includes/fonts/dashicons.eot);
+    font-weight: normal;
+    font-style: normal;
+} */
+
+/*
+*   Popup General Settings
+*/
+
+#translentor_translentor_modal_container{
+    background-color: rgba(0,0,0,0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2000000000000;
+    pointer-events: none;
+}
+
+#translentor_translentor_modal_popup{
+    box-shadow: 0 0 10px #6c7781;
+    top: 40px !important;
+    position: relative;
+}
+
+#translentor_translentor_modal_popup{
+    background-color: #F0F0EE;
+    width: 570px;
+    max-width: 75%;
+    border: 1px solid #4c6066;
+
+    padding: 25px 40px;
+    margin: auto;
+    pointer-events: auto;
+}
+
+/*
+ *  Popup textarea
+ */
+
+#translentor_translentor_popup_text{
+    text-align: left;
+    font-size: 17px;
+}
+
+/*
+ *  Popup Change Language Button and Select
+ */
+
+.translentor_translentor_select_and_button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    font-size: 17px;
+}
+
+.translentor_translentor_button{
+    margin-left: 12px;
+    width: 287px;
+}
+
+#translentor_translentor_popup_change_language{
+    text-transform: none;
+    width: 100%;
+
+    background: #1d263e;
+    border-color: #1d263e;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    display: inline-block;
+
+    font-weight: normal;
+    font-size: 17px;
+    height: 50px;
+    min-height: 30px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+#translentor_translentor_popup_change_language:hover {
+    background: #1d263e;
+    border-color: #1d263e;
+    color: #fff;
+}
+
+/*
+ *  Popup Close Button and Textarea
+ */
+
+#translentor_translentor_x_button_and_textarea{
+
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    cursor: pointer !important;
+    color: #1d263e;
+    font-size: 14px;
+    margin-top: 15px;
+    width:50%;
+}
+
+#translentor_translentor_x_button_textarea{
+    margin-left: 20px;
+    text-decoration: underline;
+    margin-bottom: 3px;
+}
+
+#translentor_translentor_modal_popup #translentor_translentor_x_button{
+    width: 0;
+    background: 0 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    color: transparent;
+    -webkit-backface-visibility: hidden;
+    outline:none;
+
+    
+}
+
+#translentor_translentor_modal_popup #translentor_translentor_x_button::before {
+    content: "\f153";
+    font: normal 35px/40px dashicons;
+    text-align: center;
+    color: #1d263e !important;
+    background: 0 0 !important;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#translentor_translentor_modal_popup #translentor_translentor_x_button::before:hover{
+    background: 0 0;
+}
+
+    /*
+     *  Popup and Hello Bar Language Switcher Aspect
+     */
+
+.translentor_ip_container{
+    height: 50px;
+    width: 100%;
+    color: #4c6066;
+    font-size: 19px;
+}
+
+.translentor_ip_container .translentor-language-switcher-container{
+    width: 100%;
+    margin: 0;
+    user-select: none;
+}
+
+.translentor_ip_container .translentor-language-switcher-container > div{
+
+    background-image: linear-gradient(
+            60deg
+            , transparent 50%, #4c6066 50%), linear-gradient(
+            120deg
+            , #4c6066 50%, transparent 50%);
+
+    background-position: calc(100% - 18px) calc(1em), calc(100% - 12px) calc(1em);
+    background-size: 6px 12px, 6px 12px;
+    background-repeat: no-repeat;
+}
+
+.translentor_ip_container .translentor-language-switcher-container .translentor-lp-shortcode-language.translentor-lp-clicked{
+
+    background-image: none;
+}
+
+.translentor_ip_container .translentor-ls-shortcode-current-language{
+    width: 100%;
+    height: 50px;
+    justify-content: left;
+    padding-bottom: 12px;
+    border: 2px solid #4c6066;
+    padding-top: 8px;
+    padding-right: 33px;
+    vertical-align: middle;
+    color: #4c6066;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.translentor_ip_container .translentor-lp-shortcode-language{
+    width: 100%;
+    height: 50px;
+    justify-content: left;
+    border: 2px solid #4c6066;
+
+    z-index: 1000000000000000;
+}
+
+.translentor_ip_container .translentor-ls-shortcode-current-language:hover{
+    cursor: pointer;
+}
+
+.translentor_ip_container .translentor-lp-shortcode-language > div:hover{
+    cursor: pointer;
+    background: #1d263e;
+    color: #ffffff;
+}
+
+.translentor_ip_container .translentor-ip-popup-select{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 33px;
+    font-size: 18px;
+    margin-right: 0px;
+}
+
+
+.translentor_ip_container .translentor-ls-shortcode-current-language{
+    padding-bottom: 12px;
+    padding-top: 6px;
+    vertical-align: middle;
+    color: #4c6066;
+    font-size: 18px;
+}
+
+.translentor_ip_container .translentor-lp-shortcode-language{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    vertical-align: middle;
+    color: #4c6066;
+    font-size: 18px;
+    visibility: hidden;
+}
+
+
+.translentor_ip_container .translentor-ls-shortcode-current-language img.translentor-flag-image{
+    display: inline-block;
+    padding-top: 9px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width:35px;
+}
+
+.translentor_ip_container .translentor-lp-shortcode-language img.translentor-flag-image{
+
+    display: inline-block;
+    padding-top: 9px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width:35px;
+
+}
+
+.translentor_ip_container #translentor_translentor_popup_current_language{
+    padding-top: 8px;
+    padding-right: 33px;
+    vertical-align: middle;
+    color: #4c6066;
+    font-size: 18px;
+    overflow: hidden;
+
+}
+
+/*
+ *  Make Language Switcher Clickable
+ */
+
+/* .translentor_ip_container .translentor-language-switcher .translentor-ls-shortcode-current-language.translentor-lp-clicked{
+    visibility: hidden;
+} */
+
+.translentor_ip_container .translentor-language-switcher:hover div.translentor-ls-shortcode-current-language{
+    visibility: visible;
+}
+
+.translentor_ip_container .translentor-language-switcher:hover div.translentor-lp-shortcode-language{
+    visibility: hidden;
+    height: 1px;
+}
+
+.translentor_ip_container .translentor-language-switcher .translentor-lp-shortcode-language.translentor-lp-clicked,
+.translentor_ip_container .translentor-language-switcher:hover .translentor-lp-shortcode-language.translentor-lp-clicked{
+    visibility:visible;
+    height: 150px;
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+/*
+ *  Hello Bar General Settings
+ */
+
+#translentor_no_text_popup_wrap{
+    width: 100%;
+    background-color: #F0F0EE;
+    z-index: 999999999999999999999999999999999;
+    box-shadow: 0 0 10px #6c7781;
+}
+
+#translentor_no_text_popup{
+    align-items: center;
+    padding: 25px 30px;
+    border: 1px solid grey;
+    justify-content: space-between;
+    display: flex;
+    vertical-align: middle;
+
+}
+
+
+
+/*
+ *  Hello Bar Textarea
+ */
+#translentor_translentor_no_text_popup_div {
+    text-align: left;
+    font-size: 17px;
+    margin-right: 10px;
+    max-width: 375px;
+}
+
+
+
+/*
+ *  Hello Bar Change Language Button and Select
+ */
+
+#translentor_translentor_not_text_popup_buttons_wrap{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.translentor_ip_container{
+    max-width: 240px;
+    color: #4c6066;
+    font-size: 19px;
+}
+ .translentor_ip_container #translentor_translentor_popup_current_language{
+    padding-top: 8px;
+    padding-right: 33px;
+    vertical-align: middle;
+    color: #4c6066;
+    font-size: 18px;
+    overflow: hidden;
+
+}
+
+.translentor_ip_container .translentor-lp-shortcode-language{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    vertical-align: middle;
+}
+
+/*
+ *  Hello Bar Change Language Button
+ */
+.translentor_translentor_change_language_div{
+    min-width: 173px;
+    height: auto;
+}
+#translentor_translentor_no_text_popup_change_language{
+    text-transform: none;
+    padding: 4px 10px;
+    height: 50px;
+
+    text-align: center;
+    background: #1d263e;
+    border-color: #1d263e;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    display: inline-block;
+
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin-left: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+#translentor_translentor_no_text_popup_change_language:hover {
+    background: #1d263e;
+    border-color: #1d263e;
+    color: #fff;
+}
+
+/*
+ * Hello Bar Close Button
+ */
+
+#translentor_translentor_no_text_popup_x{
+    width: 65px;
+    padding-left: 5px;
+}
+
+#translentor_no_text_popup #translentor_close{
+    width: 0;
+    background: 0 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    color: transparent;
+    -webkit-backface-visibility: hidden;
+    outline:none;
+}
+
+#translentor_no_text_popup #translentor_close::before {
+    content: "\f153";
+    font: normal 35px/40px dashicons;
+    text-align: center;
+    cursor: pointer;
+
+    color: #1d263e !important;
+    background: 0 0 !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+@media screen and (max-width: 780px) {
+    #translentor_translentor_modal_popup {
+        width: 80%;
+    }
+    .translentor_translentor_select_and_button{
+        display: block;
+        margin-top: 32px;
+    }
+    .translentor_ip_container #translentor_translentor_popup_current_language{
+        overflow: hidden;
+    }
+
+    .translentor_translentor_button{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 14px;
+    }
+
+    #translentor_translentor_x_button_and_textarea{
+        width: 100%;
+    }
+
+    /*
+     *  Hello Bar
+     */
+
+    #translentor_no_text_popup{
+        justify-content: center;
+    }
+
+    
+    #translentor_translentor_no_text_popup_x{
+        display:none;
+    }
+   
+  .translentor_ip_container{
+        max-width: 100%;
+        margin-top: 32px;
+    }
+    .translentor_translentor_change_language_div{
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    #translentor_translentor_no_text_popup_change_language{
+        margin-left: 0;
+    }
+
+   
+
+}

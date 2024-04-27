@@ -1,0 +1,8 @@
+version 1.5 ---
+What's new!
+-Amazing Dashboard
+-add new widgets
+-fix download as image extension bugs.
+-Add new widget for woocommerce measurements.
+-fix Ajax loading issues.
+-Optimized code.
