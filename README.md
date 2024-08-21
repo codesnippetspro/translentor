@@ -1,4 +1,4 @@
-## Description
+# Translentor - Translate Websites with Elementor
 
 Translentor is the first Elementor-specific translation tool, created for users to add translation features easily to their websites. It was created for simplicity in adding translation capabilities to Elementor websites without any awkward coding requirements or styling limitations.
 
