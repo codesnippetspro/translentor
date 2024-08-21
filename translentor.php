@@ -12,7 +12,7 @@
 
 define( 'translentor_DIR_Main', plugin_dir_path( __FILE__ ) ); 
 define( 'translentor_URL', plugin_dir_url( __FILE__ ) );
-define( 'translentor_VERSION', '1.5' );
+define( 'translentor_VERSION', '1.6.1' );
 define( 'translentor_slug', 'translentor' );
 define('translentor_category_icon', 'fa fa-plug');
 define('translentor_category', 'Translator');
