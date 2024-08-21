@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="15px" viewBox="0 0 21 15" version="1.1">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,7,0,0)">
+<stop offset="0" style="stop-color:rgb(6.666667%,18.039216%,73.72549%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(2.352941%,12.54902%,62.745098%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,8,0,7)">
+<stop offset="0" style="stop-color:rgb(89.019608%,14.901961%,29.019608%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(82.352941%,5.882353%,20.392157%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear3" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(7,0,0,6,7,5)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+<filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+  <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+</filter>
+<image id="image7" width="21" height="15" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAPCAYAAAALWoRrAAAABmJLR0QA/wD/AP+gvaeTAAAAOUlEQVQ4jWNgGAVDH/z/Y/v2/x/m/5jY8Q0+fYz4DWX+j1Mjy1+cepkIu5d0MGwMtXtLmvgooBUAAPpxG57v9ut5AAAAAElFTkSuQmCC"/>
+<mask id="mask0">
+  <g filter="url(#alpha)">
+<use xlink:href="#image7"/>
+  </g>
+</mask>
+<clipPath id="clip1">
+  <rect x="0" y="0" width="21" height="15"/>
+</clipPath>
+<g id="surface6" clip-path="url(#clip1)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(66.666667%,73.72549%,68.235294%);fill-opacity:1;" d="M 7 10 L 8.105469 9.449219 C 8.597656 9.199219 9.441406 9 10 9 L 11 9 C 11.554688 9 12.40625 9.203125 12.894531 9.449219 L 14 10 L 14 11 L 7 11 Z M 7 10 "/>
+<path style="fill:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(21.176471%,42.352941%,7.843137%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0.25 5.15625 L 0.25 5.75 L 6.75 5.75 L 6.75 5.15625 L 5.78125 4.671875 C 5.324219 4.441406 4.511719 4.25 4 4.25 L 3 4.25 C 2.484375 4.25 1.679688 4.441406 1.21875 4.671875 Z M 0.25 5.15625 " transform="matrix(1,0,0,1,7,5)"/>
+</g>
+<image id="image13" width="21" height="15" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAPCAYAAAALWoRrAAAABmJLR0QA/wD/AP+gvaeTAAAAJklEQVQ4jWNgGAUjFzASo+j/H+b/cA0sfwnqYaLERXQ1dBSMZAAAYG8EBgkVdPMAAAAASUVORK5CYII="/>
+<mask id="mask1">
+  <g filter="url(#alpha)">
+<use xlink:href="#image13"/>
+  </g>
+</mask>
+<clipPath id="clip2">
+  <rect x="0" y="0" width="21" height="15"/>
+</clipPath>
+<g id="surface12" clip-path="url(#clip2)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(83.137255%,72.156863%,44.705882%);fill-opacity:1;" d="M 12 7.5 C 12 8.328125 11.328125 9 10.5 9 C 9.671875 9 9 8.328125 9 7.5 C 9 6.671875 9.671875 6 10.5 6 C 11.328125 6 12 6.671875 12 7.5 Z M 12 7.5 "/>
+</g>
+<image id="image19" width="21" height="15" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAPCAYAAAALWoRrAAAABmJLR0QA/wD/AP+gvaeTAAAAMUlEQVQ4jWNgGAVDH/z/Y/v2/x/m/+iYkD5G/IZiN4CR5S9efUyEbCUHDB1DR8EQAQCwqBYedTCJNAAAAABJRU5ErkJggg=="/>
+<mask id="mask2">
+  <g filter="url(#alpha)">
+<use xlink:href="#image19"/>
+  </g>
+</mask>
+<clipPath id="clip3">
+  <rect x="0" y="0" width="21" height="15"/>
+</clipPath>
+<g id="surface18" clip-path="url(#clip3)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(76.078431%,51.372549%,12.941176%);fill-opacity:1;" d="M 8 8.007812 C 8 7.726562 8.179688 7.644531 8.390625 7.8125 L 10.109375 9.1875 C 10.324219 9.359375 10.679688 9.355469 10.890625 9.1875 L 12.609375 7.8125 C 12.824219 7.640625 13 7.730469 13 8.007812 L 13 9.492188 C 13 9.773438 12.785156 10 12.503906 10 L 8.496094 10 C 8.222656 10 8 9.769531 8 9.492188 Z M 8 8.007812 "/>
+<path style="fill:none;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(5.098039%,20.392157%,53.333333%);stroke-opacity:1;stroke-miterlimit:4;" d="M 1.25 3.019531 L 1.25 4.492188 C 1.25 4.632812 1.363281 4.75 1.496094 4.75 L 5.503906 4.75 C 5.644531 4.75 5.75 4.640625 5.75 4.492188 L 5.75 3.019531 L 4.046875 4.382812 C 3.742188 4.625 3.257812 4.628906 2.953125 4.382812 Z M 1.25 3.019531 " transform="matrix(1,0,0,1,7,5)"/>
+</g>
+<image id="image25" width="21" height="15" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAPCAYAAAALWoRrAAAABmJLR0QA/wD/AP+gvaeTAAAANElEQVQ4jWNgGAWjAC/4/3vx5f9/mP///734MjHqWYgzlrWYgYGBn4GB9SMFbhsFo4BcAACZmwtfBUZiuAAAAABJRU5ErkJggg=="/>
+<mask id="mask3">
+  <g filter="url(#alpha)">
+<use xlink:href="#image25"/>
+  </g>
+</mask>
+<clipPath id="clip4">
+  <rect x="0" y="0" width="21" height="15"/>
+</clipPath>
+<g id="surface24" clip-path="url(#clip4)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(12.941176%,42.352941%,18.823529%);fill-opacity:1;" d="M 9.171875 6.171875 C 9.078125 6.078125 9.113281 6 9.253906 6 L 11.746094 6 C 11.886719 6 11.917969 6.082031 11.828125 6.171875 L 10.671875 7.328125 C 10.578125 7.421875 10.417969 7.417969 10.328125 7.328125 Z M 9.171875 6.171875 "/>
+</g>
+</defs>
+<g id="surface1">
+<rect x="0" y="0" width="21" height="15" style="fill:url(#linear0);stroke:none;"/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear1);" d="M 0 0 L 21 0 L 21 7 L 0 7 Z M 0 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear2);" d="M 0 7 L 21 7 L 21 15 L 0 15 Z M 0 7 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear3);" d="M 7.5 5 L 13.5 5 C 13.777344 5 14 5.222656 14 5.5 L 14 10.5 C 14 10.777344 13.777344 11 13.5 11 L 7.5 11 C 7.222656 11 7 10.777344 7 10.5 L 7 5.5 C 7 5.222656 7.222656 5 7.5 5 Z M 7.5 5 "/>
+<use xlink:href="#surface6" mask="url(#mask0)"/>
+<use xlink:href="#surface12" mask="url(#mask1)"/>
+<use xlink:href="#surface18" mask="url(#mask2)"/>
+<use xlink:href="#surface24" mask="url(#mask3)"/>
+</g>
+</svg>

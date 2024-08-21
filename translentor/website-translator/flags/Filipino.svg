@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="15px" viewBox="0 0 21 15" version="1.1">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,19.607843%,24.313725%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(99.215686%,5.098039%,10.588235%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(13,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,80%,31.764706%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(100%,77.647059%,23.529412%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear3" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(9,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(14.901961%,14.901961%,14.901961%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(5.098039%,5.098039%,5.098039%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear4" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(4.928041,-2.845206,2.832338,4.905752,0.0748891,6.483398)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+<g id="surface1">
+<rect x="0" y="0" width="21" height="15" style="fill:url(#linear0);stroke:none;"/>
+<rect x="0" y="0" width="21" height="15" style="fill:url(#linear1);stroke:none;"/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear2);" d="M 0 0 L 13 7.5 L 0 15 Z M 0 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear3);" d="M 0 0 L 9 7.5 L 0 15 Z M 0 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear4);" d="M 4.457031 8.117188 L 3.792969 9.574219 L 3.449219 8.011719 L 1.859375 7.832031 L 3.238281 7.019531 L 2.917969 5.453125 L 4.117188 6.511719 L 5.507812 5.726562 L 4.871094 7.191406 L 6.050781 8.269531 Z M 4.457031 8.117188 "/>
+</g>
+</svg>
