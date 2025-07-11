@@ -1,1 +1,8 @@
+.idea
+.story
 .DS_Store
+Thumbs.db
+
+node_module
+vendor
+/bundle/
