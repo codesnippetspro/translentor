@@ -56,6 +56,8 @@ jobs:
       
       - name: Commit changes
         run: |
+          git config user.name "code-snippets-bot"
+          git config user.email "sre@codesnippets.pro"
           git commit -m "chore(tag): v${{ steps.version.outputs.version }}"
       
       - name: Push branch
