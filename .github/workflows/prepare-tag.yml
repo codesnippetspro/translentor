@@ -60,7 +60,7 @@ jobs:
       
       - name: Push branch
         run: |
-          git push --set-upstream origin "tag/${{ steps.version.outputs.version }}"
+          git push --set-upstream origin "tag/v${{ steps.version.outputs.version }}"
       
       - name: Open pull request
         run: |
