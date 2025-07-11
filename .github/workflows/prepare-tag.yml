@@ -47,7 +47,7 @@ jobs:
       
       - name: Create and switch to tag branch
         run: |
-          git checkout -b "tag/${{ steps.version.outputs.version }}"
+          git checkout -b "tag/v${{ steps.version.outputs.version }}"
       
       - name: Add all changes
         run: |
