@@ -10,7 +10,7 @@ on:
         default: next
 
 jobs:
-  create-tag:
+  prepare-tag:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
