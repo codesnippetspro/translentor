@@ -1,0 +1,21 @@
+{
+    "name": "codesnippetspro/translentor",
+    "version": "1.6.1",
+    "description": "Translentor - Elementor-specific translation tool for WordPress.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Translentor\\": "src/"
+        }
+    },
+    "scripts": {
+        "set-version": "php scripts/set-version.php"
+    },
+    "extra": {
+        "wordpress-plugin": {
+            "src": "src"
+        }
+    }
+}
