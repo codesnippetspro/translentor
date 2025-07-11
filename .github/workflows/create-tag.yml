@@ -1,4 +1,4 @@
-name: "(Tag): Create"
+name: "(Tag): Prepare"
 
 on:
   workflow_dispatch:
