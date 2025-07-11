@@ -54,6 +54,6 @@ jobs:
       repo: ${{ github.repository }}
       branch: ${{ github.ref_name }}
       tag: ${{ needs.install.outputs.version}}
-      slug: ${{ github.repository }}
+      slug: translate-websites-translentor
       artifact_url: ${{ needs.upload.outputs.artifact_url }}
       artifact_name: ${{ needs.upload.outputs.artifact_name }}
