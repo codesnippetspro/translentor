@@ -1,0 +1,67 @@
+name: "(Tag): Create"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to create the tag for (e.g. 3.6.9) or `next`'
+        required: true
+        type: string
+        default: next
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout branch for release
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+
+      - name: Install Composer dependencies
+        run: npm install
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event.inputs.version }}" = "next" ]; then
+            CURR=$(composer get-version)
+            MAJOR=$(echo $CURR | cut -d. -f1)
+            MINOR=$(echo $CURR | cut -d. -f2)
+            PATCH=$(echo $CURR | cut -d. -f3)
+            NEW_PATCH=$((PATCH+1))
+            NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+            echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          fi      
+      
+      - name: Set new version
+        run: |
+          composer set-version -- --v=${{ steps.version.outputs.version }}
+      
+      - name: Create and switch to tag branch
+        run: |
+          git checkout -b "tag/${{ steps.version.outputs.version }}"
+      
+      - name: Add all changes
+        run: |
+          git ls-files --others --modified --exclude-standard | xargs git add
+          git add -u
+      
+      - name: Commit changes
+        run: |
+          git commit -m "chore(tag): v${{ steps.version.outputs.version }}"
+      
+      - name: Push branch
+        run: |
+          git push --set-upstream origin "tag/${{ steps.version.outputs.version }}"
+      
+      - name: Open pull request
+        run: |
+          gh pr create --title 'chore(release): `v${{ steps.version.outputs.version }}`' --body 'Release `v${{ steps.version.outputs.version }}`' --base main --head "tag/${{ steps.version.outputs.version }}"
