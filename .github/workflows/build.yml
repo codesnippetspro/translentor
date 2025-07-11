@@ -26,12 +26,16 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
 
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+
       - name: Install & Build
         id: build
         run: |
-          npm install && npm run bundle
-          echo "name=$(jq -r .name package.json)" >> $GITHUB_OUTPUT
-          echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+          echo "name=$(jq -r '.name | split("/") | .[-1]' composer.json)" >> $GITHUB_OUTPUT
+          echo "version=$(composer get-version)" >> $GITHUB_OUTPUT
 
       - name: Upload
         id: artifacts
