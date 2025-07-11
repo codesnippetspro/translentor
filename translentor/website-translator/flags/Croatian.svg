@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="15px" viewBox="0 0 21 15" version="1.1">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,5,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,12.54902%,17.647059%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(99.215686%,5.098039%,10.588235%);stop-opacity:1;"/>
+</linearGradient>
+<filter id="alpha" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%">
+  <feColorMatrix type="matrix" in="SourceGraphic" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+</filter>
+<mask id="mask0">
+  <g filter="url(#alpha)">
+<rect x="0" y="0" width="21" height="15" style="fill:rgb(0%,0%,0%);fill-opacity:0.501961;stroke:none;"/>
+  </g>
+</mask>
+<clipPath id="clip1">
+  <rect x="0" y="0" width="21" height="15"/>
+</clipPath>
+<g id="surface5" clip-path="url(#clip1)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(9.411765%,58.431373%,85.882353%);fill-opacity:1;" d="M 8 4 L 8.5 3.5 L 9 4 L 9 5 L 8 5 Z M 10 4 L 10.5 3.5 L 11 4 L 11 5 L 10 5 Z M 12 4 L 12.5 3.5 L 13 4 L 13 5 L 12 5 Z M 12 4 "/>
+</g>
+<mask id="mask1">
+  <g filter="url(#alpha)">
+<rect x="0" y="0" width="21" height="15" style="fill:rgb(0%,0%,0%);fill-opacity:0.501961;stroke:none;"/>
+  </g>
+</mask>
+<clipPath id="clip2">
+  <rect x="0" y="0" width="21" height="15"/>
+</clipPath>
+<g id="surface8" clip-path="url(#clip2)">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(9.803922%,12.156863%,58.039216%);fill-opacity:1;" d="M 9 4 L 9.5 3.5 L 10 4 L 10 5 L 9 5 Z M 11 4 L 11.5 3.5 L 12 4 L 12 5 L 11 5 Z M 11 4 "/>
+</g>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,5,0,10)">
+<stop offset="0" style="stop-color:rgb(12.54902%,15.294118%,67.45098%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(9.803922%,12.156863%,58.039216%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear3" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,6,0,5)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear4" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(5,0,0,6,8,5)">
+<stop offset="0" style="stop-color:rgb(100%,12.941176%,18.039216%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(99.215686%,5.098039%,10.588235%);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+<g id="surface1">
+<rect x="0" y="0" width="21" height="15" style="fill:url(#linear0);stroke:none;"/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear1);" d="M 0 0 L 21 0 L 21 5 L 0 5 Z M 0 0 "/>
+<use xlink:href="#surface5" mask="url(#mask0)"/>
+<use xlink:href="#surface8" mask="url(#mask1)"/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear2);" d="M 0 10 L 21 10 L 21 15 L 0 15 Z M 0 10 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear3);" d="M 0 10 L 0 5 L 21 5 L 21 10 Z M 12 10 L 13 10 L 12.726562 10.546875 C 12.601562 10.796875 12.273438 11 12 11 Z M 10 10 L 11 10 L 11 11 L 10 11 Z M 8 10 L 9 10 L 9 11 C 8.722656 11 8.402344 10.808594 8.273438 10.546875 Z M 8 10 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear4);" d="M 10 5 L 11 5 L 11 6 L 10 6 Z M 12 5 L 12.5 5 L 13 6 L 12 6 Z M 8.5 5 L 9 5 L 9 6 L 8 6 Z M 9 6 L 10 6 L 10 7 L 9 7 Z M 11 6 L 12 6 L 12 7 L 11 7 Z M 10 7 L 11 7 L 11 8 L 10 8 Z M 12 7 L 13 7 L 13 8 L 12 8 Z M 11 8 L 12 8 L 12 9 L 11 9 Z M 8 7 L 9 7 L 9 8 L 8 8 Z M 9 8 L 10 8 L 10 9 L 9 9 Z M 8 9 L 9 9 L 9 10 L 8 10 Z M 10 9 L 11 9 L 11 10 L 10 10 Z M 12 9 L 13 9 L 13 10 L 12 10 Z M 11 10 L 12 10 L 12 11 L 11 11 Z M 9 10 L 10 10 L 10 11 L 9 11 Z M 9 10 "/>
+</g>
+</svg>

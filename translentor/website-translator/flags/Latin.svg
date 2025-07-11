@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21px" height="15px" viewBox="0 0 21 15" version="1.1">
+<defs>
+<linearGradient id="linear0" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,15,0,0)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear1" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,7,0,4)">
+<stop offset="0" style="stop-color:rgb(2.745098%,22.745098%,53.333333%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(1.176471%,16.470588%,40.392157%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear2" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,4,0,0)">
+<stop offset="0" style="stop-color:rgb(88.627451%,15.294118%,24.313725%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(80%,8.627451%,17.254902%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear3" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(21,0,0,4,0,11)">
+<stop offset="0" style="stop-color:rgb(88.627451%,15.294118%,24.313725%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(80%,8.627451%,17.254902%);stop-opacity:1;"/>
+</linearGradient>
+<linearGradient id="linear4" gradientUnits="userSpaceOnUse" x1="0.5" y1="0" x2="0.5" y2="1" gradientTransform="matrix(5,0,0,5,8,5)">
+<stop offset="0" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(94.117647%,94.117647%,94.117647%);stop-opacity:1;"/>
+</linearGradient>
+</defs>
+<g id="surface1">
+<rect x="0" y="0" width="21" height="15" style="fill:url(#linear0);stroke:none;"/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear1);" d="M 0 4 L 21 4 L 21 11 L 0 11 Z M 0 4 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear2);" d="M 0 0 L 21 0 L 21 4 L 0 4 Z M 0 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear3);" d="M 0 11 L 21 11 L 21 15 L 0 15 Z M 0 11 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:url(#linear4);" d="M 13 7.5 C 13 8.878906 11.878906 10 10.5 10 C 9.121094 10 8 8.878906 8 7.5 C 8 6.121094 9.121094 5 10.5 5 C 11.878906 5 13 6.121094 13 7.5 Z M 13 7.5 "/>
+</g>
+</svg>
