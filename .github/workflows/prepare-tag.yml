@@ -65,5 +65,7 @@ jobs:
           git push --set-upstream origin "tag/v${{ steps.version.outputs.version }}"
       
       - name: Open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr create --title 'chore(release): `v${{ steps.version.outputs.version }}`' --body 'Release `v${{ steps.version.outputs.version }}`' --base main --head "tag/${{ steps.version.outputs.version }}"
