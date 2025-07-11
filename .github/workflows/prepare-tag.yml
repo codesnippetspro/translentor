@@ -24,7 +24,7 @@ jobs:
           php-version: "8.3"
 
       - name: Install Composer dependencies
-        run: npm install
+        run: composer install
 
       - name: Determine version
         id: version
