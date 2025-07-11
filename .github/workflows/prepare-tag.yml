@@ -1,4 +1,4 @@
-name: "🏷️ (Tag): Prepare"
+name: "_(Tag): Prepare"
 
 on:
   workflow_dispatch:
