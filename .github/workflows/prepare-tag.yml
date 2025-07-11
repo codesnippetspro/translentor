@@ -68,4 +68,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.TR_GH_TOKEN }}
         run: |
-          gh pr create --title 'chore(release): `v${{ steps.version.outputs.version }}`' --body 'Release `v${{ steps.version.outputs.version }}`' --base main --head "tag/${{ steps.version.outputs.version }}"
+          gh pr create --title 'chore(release): `v${{ steps.version.outputs.version }}`' --body 'Release `v${{ steps.version.outputs.version }}`' --base main --head "tag/v${{ steps.version.outputs.version }}"
