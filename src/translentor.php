@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Translentor
  * Plugin URI: https://translentor.com
@@ -11,50 +10,35 @@
  * @package Translentor
  */
 
-define('translentor_DIR_Main', plugin_dir_path(__FILE__));
-define('translentor_URL', plugin_dir_url(__FILE__));
-define('translentor_VERSION', '1.6.2');
-define('translentor_slug', 'translentor');
-define('translentor_category_icon', 'fa fa-plug');
-define('translentor_category', 'Translator');
+if (!defined('ABSPATH')) exit;
 
-use Elementor\Plugin;
+define('TRANSLENTOR_DIR', plugin_dir_path(__FILE__));
+define('TRANSLENTOR_URL', plugin_dir_url(__FILE__));
+define('TRANSLENTOR_VERSION', '1.6.2');
+define('TRANSLENTOR_SLUG', 'translentor');
 
+autoload_translentor_classes();
 
-
-function cyb_activation_redirect($plugin)
-{
-  if ($plugin == plugin_basename(__FILE__)) {
-    exit(wp_redirect(admin_url('admin.php?page=translentor-module')));
-  }
-}
-add_action('elementor/elements/categories_registered', function () {
-  $elementsManager = Plugin::instance()->elements_manager;
-
-  $elementsManager->add_category(
-      'translentor-category',
-      array(
-        'title' => translentor_category,
-        'icon'  => translentor_category_icon,
-      )
-    );
-});
-//require_once translentor_DIR_Main .'translentor/translentor.php';
-
-
-require_once translentor_DIR_Main . 'widgets/index.php';
-
-function translentor_admin_notices()
-{
-
-  if (!class_exists('Elementor\Plugin')) {
-
-?>
-    <div class="notice notice-warning is-dismissible">
-      <p><strong>Warning</strong>: Translentor work with Elementor Plugin. Please Activate Elementor Plugin</p>
-    </div>
-<?php
-  }
+function autoload_translentor_classes() {
+    spl_autoload_register(function ($class) {
+        $prefix = 'Translentor\\';
+        $base_dir = __DIR__ . '/';
+        if (strpos($class, $prefix) !== 0) {
+            return;
+        }
+        $relative_class = str_replace($prefix, '', $class);
+        $file = $base_dir . str_replace('\\', '/', strtolower($relative_class)) . '.php';
+        if (file_exists($file)) {
+            require_once $file;
+        }
+    });
 }
 
-add_action('admin_notices', 'translentor_admin_notices');
+register_activation_hook(__FILE__, ['Translentor\Includes\Activator', 'activate']);
+register_deactivation_hook(__FILE__, ['Translentor\Includes\Deactivator', 'deactivate']);
+
+function run_translentor() {
+    $plugin = new Translentor\Includes\Loader();
+    $plugin->run();
+}
+run_translentor();
