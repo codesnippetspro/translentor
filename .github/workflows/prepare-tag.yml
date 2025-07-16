@@ -57,13 +57,22 @@ jobs:
     outputs:
       patch: ${{ steps.build.outputs.patch }}
     steps:
+      - name: Checkout changelog-action private repo
+        uses: actions/checkout@v4
+        with:
+          repository: codesnippetspro/changelog-action
+          token: ${{ secrets.PRIVATE_ACTION_TOKEN }}
+          path: changelog-action
+      
       - name: Generate changelog + readme patch
         id: build
-        uses: codesnippetspro/changelog-action@v1
+        uses: ./changelog-action
         with:
           repo: ${{ github.repository }}
           branch: ${{ github.ref_name }}
           tag: ${{ needs.get-version.outputs.version }}
+      
+          
 
   git-push:
     runs-on: ubuntu-latest
@@ -109,6 +118,6 @@ jobs:
       
       - name: "Open pull request: chore(release): `v${{ needs.get-version.outputs.version }}`"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TR_GH_TOKEN }}
         run: |
           gh pr create --title 'chore(release): `v${{ needs.get-version.outputs.version }}`' --body 'Release `v${{ needs.get-version.outputs.version }}`' --base main --head "tag/v${{ needs.get-version.outputs.version }}"
