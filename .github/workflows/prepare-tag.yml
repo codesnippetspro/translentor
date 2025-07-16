@@ -53,7 +53,8 @@ jobs:
       pull-requests: write
       actions: read
       models: read
-    uses: codesnippetspro/.github-private/.github/workflows/changelog.yml@v1
+    # uses: codesnippetspro/.github-private/.github/workflows/changelog.yml@v1
+    uses: codesnippetspro/changelog-workflow@v1
     with:
       repo: ${{ github.repository }}
       branch: ${{ github.ref_name }}
