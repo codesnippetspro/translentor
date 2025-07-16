@@ -15,15 +15,15 @@ on:
         default: next
 
 jobs:
-  get-version:
+  version:
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout branch for release
         uses: actions/checkout@v4
 
-      - name: Determine version
+      - name: Get tag version from package.json
         id: version
         run: |
           INPUT_VERSION=${{ github.event.inputs.version }} 
@@ -50,75 +50,28 @@ jobs:
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-  generate-changelog:
-    needs: get-version
+  changelog:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      actions: read
-      models: read
+    needs: version
     strategy:
       matrix:
         include:
           - target-file: "CHANGELOG.md"
             template: "changelog"
+            name: "github-changelog"
           - target-file: "src/readme.txt"
             template: "readme"
+            name: "wordpress-readme"
     steps:
-      - name: Checkout changelog-action private repo
-        uses: actions/checkout@v4
-        with:
-          repository: codesnippetspro/changelog-action
-          token: ${{ secrets.PRIVATE_ACTION_TOKEN }}
-          path: ./changelog-action
-      
-      - name: Generate patch for ${{ matrix.target-file }}
-        id: build
-        uses: ./changelog-action
-        with:
-          repo: ${{ github.repository }}
-          branch: ${{ github.ref_name }}
-          tag: ${{ needs.get-version.outputs.version }}
-          target-file: ${{ matrix.target-file }}
-          template: ${{ matrix.template }}
-      
-  git-push:
-    runs-on: ubuntu-latest
-    needs: [get-version, generate-changelog]
-    steps:
-      - name: Checkout branch for release
-        uses: actions/checkout@v4
-
-      - name: Configure Git
-        run: |
-          git config user.name "code-snippets-bot"
-          git config user.email "sre@codesnippets.pro"
-
-      - name: Create and switch to tag branch
-        run: |
-          git checkout -b "tag/v${{ needs.get-version.outputs.version }}"
-
-      - name: Commit changelog update
-        run: |
-          echo "${{ needs.generate-changelog.outputs.patch }}" | git apply -
-          git ls-files --others --modified --exclude-standard | xargs git add
-          git add -u
-          git commit -m "chore(changelog): v${{ needs.get-version.outputs.version }}"
-
-      - name: Update version in composer.json
-        run: |
-          jq ".version = \"${{ needs.get-version.outputs.version }}\"" composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-          git ls-files --others --modified --exclude-standard | xargs git add
-          git add -u
-          git commit -m "chore(tag): v${{ needs.get-version.outputs.version }}"
-
-      - name: "Push to branch `tag/v${{ needs.get-version.outputs.version }}`"
-        run: |
-          git push --set-upstream origin "tag/v${{ needs.get-version.outputs.version }}"
-
-      - name: "Open pull request: chore(release): `v${{ needs.get-version.outputs.version }}`"
+      - name: Dispatch changelog generation
         env:
-          GH_TOKEN: ${{ secrets.TR_GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          gh pr create --title 'chore(release): `v${{ needs.get-version.outputs.version }}`' --body 'Release `v${{ needs.get-version.outputs.version }}`' --base main --head "tag/v${{ needs.get-version.outputs.version }}"
+          sudo apt update && sudo apt install -y gh
+          gh workflow run changelog.yml \
+            --repo codesnippetspro/.github-private \
+            --field repo="${{ github.repository }}" \
+            --field branch="${{ github.ref_name }}" \
+            --field version="${{ needs.version.outputs.tag }}" \
+            --field template="${{ matrix.template }}" \
+            --field target_file="./${{ matrix.target-file }}"
