@@ -54,8 +54,13 @@ jobs:
       pull-requests: write
       actions: read
       models: read
-    outputs:
-      patch: ${{ steps.build.outputs.patch }}
+    strategy:
+      matrix:
+        include:
+          - target-file: "CHANGELOG.md"
+            template: "changelog"
+          - target-file: "src/readme.txt"
+            template: "readme"
     steps:
       - name: Checkout changelog-action private repo
         uses: actions/checkout@v4
@@ -64,16 +69,16 @@ jobs:
           token: ${{ secrets.PRIVATE_ACTION_TOKEN }}
           path: ./changelog-action
       
-      - name: Generate changelog & readme patch
+      - name: Generate patch for ${{ matrix.target-file }}
         id: build
         uses: ./changelog-action
         with:
           repo: ${{ github.repository }}
           branch: ${{ github.ref_name }}
           tag: ${{ needs.get-version.outputs.version }}
+          target-file: ${{ matrix.target-file }}
+          template: ${{ matrix.template }}
       
-          
-
   git-push:
     runs-on: ubuntu-latest
     needs: [get-version, generate-changelog]
