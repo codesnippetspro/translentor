@@ -65,13 +65,17 @@ jobs:
     steps:
       - name: Dispatch changelog generation
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sudo apt update && sudo apt install -y gh
+          
+          if ! command -v gh &> /dev/null; then
+            sudo apt update && sudo apt install -y gh
+          fi
+          
           gh workflow run changelog.yml \
             --repo codesnippetspro/.github-private \
             --field repo="${{ github.repository }}" \
             --field branch="${{ github.ref_name }}" \
             --field version="${{ needs.version.outputs.tag }}" \
             --field template="${{ matrix.template }}" \
-            --field target_file="./${{ matrix.target-file }}"
+            --field target-file="./${{ matrix.target-file }}"
