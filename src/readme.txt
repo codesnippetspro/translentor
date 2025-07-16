@@ -114,3 +114,13 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 7. Elementor Text Highlight Widget
 8. Elementor Reset Password Widget
 
+== Changelog ==
+
+= [1.6.1] (2024-11-11) =
+
+__Changed__
+* Ajax loading issue corrected
+* Optimized code for faster on page translations
+* Additional Elementor styling
+* Improved Elementor styling
+* Updated flag icons
