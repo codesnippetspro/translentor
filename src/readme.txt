@@ -116,7 +116,7 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 
 == Changelog ==
 
-= [1.6.1] (2024-11-11) =
+= 1.6.1 (2024-11-11) =
 
 __Changed__
 * Ajax loading issue corrected
