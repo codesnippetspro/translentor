@@ -62,11 +62,11 @@ jobs:
         with:
           repository: codesnippetspro/changelog-action
           token: ${{ secrets.PRIVATE_ACTION_TOKEN }}
-          path: changelog-action
+          path: ../changelog-action
       
       - name: Generate changelog & readme patch
         id: build
-        uses: changelog-action
+        uses: ../changelog-action
         with:
           repo: ${{ github.repository }}
           branch: ${{ github.ref_name }}
