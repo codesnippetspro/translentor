@@ -64,7 +64,7 @@ jobs:
           token: ${{ secrets.PRIVATE_ACTION_TOKEN }}
           path: changelog-action
       
-      - name: Generate changelog + readme patch
+      - name: Generate changelog & readme patch
         id: build
         uses: changelog-action
         with:
