@@ -152,6 +152,18 @@ jobs:
           fi
 
           echo "✅ Successfully dispatched changelog generation for ${{ matrix.name }}"
+          
+          # Wait a moment for the run to be created and get its URL
+          echo "⏳ Getting workflow run URL..."
+          sleep 5
+          
+          # Get the most recent run URL for this workflow
+          if run_url=$(gh run list --repo "$target_repo" --workflow "$workflow_id" --limit 1 --json url -q '.[0].url' 2>/dev/null); then
+            if [ -n "$run_url" ] && [ "$run_url" != "null" ]; then
+              echo "🔗 View dispatched workflow run: $run_url"
+            fi
+          fi
+          
           echo "skip_monitoring=false" >> $GITHUB_OUTPUT
           echo "workflow_id=$workflow_id" >> $GITHUB_OUTPUT
           echo "workflow_name=$workflow_name" >> $GITHUB_OUTPUT
