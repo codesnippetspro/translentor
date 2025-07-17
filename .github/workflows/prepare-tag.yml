@@ -201,7 +201,7 @@ jobs:
             fi
             
             # Try to get the status of the most recent run for our workflow
-            run_data=$(gh run list --repo "$target_repo" --limit 10 --json status,conclusion,workflowDatabaseId 2>/dev/null | jq -r ".[] | select(.workflowDatabaseId == $workflow_id) | [.status, .conclusion] | @tsv" | head -1)
+            run_data=$(gh run list --repo "$target_repo" --limit 10 --json status,conclusion,workflowDatabaseId,url,id 2>/dev/null | jq -r ".[] | select(.workflowDatabaseId == $workflow_id) | [.status, .conclusion, .url, .id] | @tsv" | head -1)
             
             if [ -z "$run_data" ]; then
               echo "⏳ Attempt $attempt/$max_attempts: No runs found for workflow ID $workflow_id yet. Checking again..."
@@ -211,15 +211,21 @@ jobs:
             
             status=$(echo "$run_data" | cut -f1)
             conclusion=$(echo "$run_data" | cut -f2)
+            run_url=$(echo "$run_data" | cut -f3)
+            run_id=$(echo "$run_data" | cut -f4)
             
             echo "📊 Workflow status: $status, conclusion: $conclusion"
+            echo "🔗 Run URL: $run_url"
             
             if [ "$status" = "completed" ]; then
               if [ "$conclusion" != "success" ] && [ "$conclusion" != "null" ]; then
                 echo "::error::Workflow $workflow_name (ID: $workflow_id) failed with conclusion: $conclusion"
+                echo "::error::❌ View failed workflow run: $run_url"
+                echo "::error::📋 Run ID: $run_id"
                 exit 1
               fi
               echo "✅ Workflow $workflow_name (ID: $workflow_id) completed successfully"
+              echo "🔗 View successful workflow run: $run_url"
               break
             fi
             
