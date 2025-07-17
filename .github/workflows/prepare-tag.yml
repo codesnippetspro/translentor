@@ -173,13 +173,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          workflow_name="${{ steps.dispatch.outputs.workflow_name }}"
+          workflow_name="${{ matrix.name }}"
           workflow_id="${{ steps.dispatch.outputs.workflow_id }}"
           target_repo="codesnippetspro/.github-private"
-          max_attempts=10
+          max_attempts=30  # Maximum 5 minutes (30 * 10 seconds)
           attempt=0
           
-          echo "Monitoring workflow: $workflow_name (ID: $workflow_id) in repository: $target_repo"
+          echo "Monitoring workflow: $workflow_name in repository: $target_repo"
           
           # Check if the repository exists and is accessible
           if ! gh repo view "$target_repo" >/dev/null 2>&1; then
@@ -188,66 +188,51 @@ jobs:
             exit 0
           fi
           
-          # Wait a bit for the workflow to start
-          echo "⏳ Waiting 10 seconds for workflow to start..."
-          sleep 10
-          
           while : ; do
             attempt=$((attempt + 1))
             
             # Check if we've exceeded max attempts
             if [ $attempt -gt $max_attempts ]; then
               echo "::warning::Timeout reached after $max_attempts attempts. Workflow '$workflow_name' monitoring stopped."
-              echo "::warning::Since dispatch was successful, marking this step as successful."
-              echo "✅ Dispatch was successful - workflow may still be running in the background"
+              echo "::warning::This might be expected if testing locally or if the workflow doesn't exist yet."
               exit 0
             fi
             
-            # Get the latest run for this workflow using the workflow ID
-            echo "🔍 Attempt $attempt/$max_attempts: Checking workflow status..."
+            # Try to get workflow status by changelog.yml first, then fallback to workflow ID
+            status=""
+            conclusion=""
             
-            # First check if we can list any runs at all
-            if ! gh run list --repo "$target_repo" --limit 1 --json status,conclusion,workflowDatabaseId >/dev/null 2>&1; then
-              echo "::warning::Attempt $attempt/$max_attempts: Cannot access workflow runs in $target_repo."
-              if [ $attempt -ge 3 ]; then
-                echo "::warning::Since dispatch was successful but can't monitor, marking as successful."
-                echo "✅ Dispatch was successful - unable to monitor but assuming workflow is running"
-                exit 0
+            # First attempt: Try using changelog.yml filename
+            if status=$(gh run list --workflow changelog.yml --limit 1 --json status -q '.[0].status' --repo "$target_repo" --ref main 2>/dev/null) && [ -n "$status" ]; then
+              conclusion=$(gh run list --workflow changelog.yml --limit 1 --json conclusion -q '.[0].conclusion' --repo "$target_repo" --ref main 2>/dev/null)
+            else
+              # Fallback: Try using workflow ID from previous step
+              if [ -n "$workflow_id" ]; then
+                echo "::info::Attempt $attempt/$max_attempts: changelog.yml not found, trying workflow ID $workflow_id"
+                run_data=$(gh run list --repo "$target_repo" --limit 10 --json status,conclusion,workflowDatabaseId 2>/dev/null | jq -r ".[] | select(.workflowDatabaseId == $workflow_id) | [.status, .conclusion] | @tsv" | head -1)
+                if [ -n "$run_data" ]; then
+                  status=$(echo "$run_data" | cut -f1)
+                  conclusion=$(echo "$run_data" | cut -f2)
+                fi
               fi
-              echo "::warning::Retrying..."
+            fi
+            
+            # If we still couldn't get status, continue waiting
+            if [ -z "$status" ]; then
+              echo "::warning::Attempt $attempt/$max_attempts: Could not find workflow '$workflow_name' or no runs exist yet. Checking again..."
               sleep 10
               continue
             fi
-            
-            # Try to get the status of the most recent run for our workflow
-            run_data=$(gh run list --repo "$target_repo" --limit 10 --json status,conclusion,workflowDatabaseId,url,id 2>/dev/null | jq -r ".[] | select(.workflowDatabaseId == $workflow_id) | [.status, .conclusion, .url, .id] | @tsv" | head -1)
-            
-            if [ -z "$run_data" ]; then
-              echo "⏳ Attempt $attempt/$max_attempts: No runs found for workflow ID $workflow_id yet. Checking again..."
-              sleep 10
-              continue
-            fi
-            
-            status=$(echo "$run_data" | cut -f1)
-            conclusion=$(echo "$run_data" | cut -f2)
-            run_url=$(echo "$run_data" | cut -f3)
-            run_id=$(echo "$run_data" | cut -f4)
-            
-            echo "📊 Workflow status: $status, conclusion: $conclusion"
-            echo "🔗 Run URL: $run_url"
             
             if [ "$status" = "completed" ]; then
-              if [ "$conclusion" != "success" ] && [ "$conclusion" != "null" ]; then
-                echo "::error::Workflow $workflow_name (ID: $workflow_id) failed with conclusion: $conclusion"
-                echo "::error::❌ View failed workflow run: $run_url"
-                echo "::error::📋 Run ID: $run_id"
+              if [ "$conclusion" != "success" ]; then
+                echo "::error::Workflow $workflow_name failed with conclusion: $conclusion"
                 exit 1
               fi
-              echo "✅ Workflow $workflow_name (ID: $workflow_id) completed successfully"
-              echo "🔗 View successful workflow run: $run_url"
+              echo "✅ Workflow $workflow_name completed successfully"
               break
             fi
             
-            echo "⏳ Attempt $attempt/$max_attempts: Workflow $workflow_name (ID: $workflow_id) is still running (status: $status). Waiting..."
+            echo "⏳ Attempt $attempt/$max_attempts: Workflow $workflow_name is still running (status: $status). Waiting..."
             sleep 10
           done
