@@ -82,41 +82,83 @@ jobs:
             exit 1
           fi
           
-          # Check if the workflow exists
-          if ! gh workflow list --repo "$target_repo" | grep -q "changelog.yml"; then
-            echo "::warning::Workflow 'changelog.yml' not found in $target_repo"
-            echo "::warning::Skipping changelog generation for ${{ matrix.name }}"
-            echo "skip_monitoring=true" >> $GITHUB_OUTPUT
-            exit 1
+          # Dynamically find the changelog workflow
+          echo "🔍 Looking for changelog workflow in $target_repo..."
+          
+          # Try different possible workflow names/patterns
+          workflow_candidates=(
+            "changelog.yml"
+            "changelog"
+            "Changelog"
+            "(Changelog): Generate"
+            "Generate"
+          )
+          
+          workflow_id=""
+          workflow_name=""
+          
+          # First, try to find by exact name match
+          for candidate in "${workflow_candidates[@]}"; do
+            if workflow_info=$(gh workflow list --repo "$target_repo" | grep -i "$candidate" | head -1); then
+              # Extract workflow ID (last column)
+              workflow_id=$(echo "$workflow_info" | awk '{print $NF}')
+              workflow_name="$candidate"
+              echo "✅ Found workflow '$candidate' with ID: $workflow_id"
+              break
+            fi
+          done
+          
+          # If not found by name, try to find by keywords in the workflow name
+          if [ -z "$workflow_id" ]; then
+            echo "🔍 Searching for workflow containing 'changelog' or 'generate'..."
+            if workflow_info=$(gh workflow list --repo "$target_repo" | grep -i -E "(changelog|generate)" | head -1); then
+              workflow_id=$(echo "$workflow_info" | awk '{print $NF}')
+              workflow_name=$(echo "$workflow_info" | awk '{for(i=1;i<NF;i++) printf "%s ", $i; print ""}' | sed 's/ *$//')
+              echo "✅ Found workflow '$workflow_name' with ID: $workflow_id"
+            fi
           fi
           
-          # Attempt to dispatch the workflow with error handling
-          if ! gh workflow run changelog.yml \
+          # If still not found, list all workflows and exit
+          if [ -z "$workflow_id" ]; then
+            echo "::warning::No changelog workflow found in $target_repo"
+            echo "🔍 Available workflows:"
+            gh workflow list --repo "$target_repo" || echo "Failed to list workflows"
+            echo "::warning::Skipping changelog generation for ${{ matrix.name }}"
+            echo "skip_monitoring=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Attempt to dispatch the workflow using the found ID
+          echo "🚀 Dispatching workflow ID: $workflow_id ($workflow_name)"
+          if ! gh workflow run "$workflow_id" \
             --repo "$target_repo" --ref main \
             --field repo="${{ github.repository }}" \
             --field branch="${{ github.ref_name }}" \
             --field version="${{ needs.version.outputs.tag }}" \
             --field template="${{ matrix.template }}" \
             --field target-file="./${{ matrix.target-file }}"; then
-            echo "::error::Failed to dispatch workflow changelog.yml in $target_repo"
-            echo "::error::This might be due to insufficient permissions or missing workflow"
+            echo "::error::Failed to dispatch workflow ID $workflow_id in $target_repo"
+            echo "::error::This might be due to insufficient permissions or workflow configuration"
             exit 1
           fi
           
           echo "✅ Successfully dispatched changelog generation for ${{ matrix.name }}"
           echo "skip_monitoring=false" >> $GITHUB_OUTPUT
+          echo "workflow_id=$workflow_id" >> $GITHUB_OUTPUT
+          echo "workflow_name=$workflow_name" >> $GITHUB_OUTPUT
 
       - name: Monitor workflow execution
         if: steps.dispatch.outputs.skip_monitoring != 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          workflow_name="${{ matrix.name }}"
+          workflow_name="${{ steps.dispatch.outputs.workflow_name }}"
+          workflow_id="${{ steps.dispatch.outputs.workflow_id }}"
           target_repo="codesnippetspro/.github-private"
           max_attempts=30  # Maximum 5 minutes (30 * 10 seconds)
           attempt=0
           
-          echo "Monitoring workflow: $workflow_name in repository: $target_repo"
+          echo "Monitoring workflow: $workflow_name (ID: $workflow_id) in repository: $target_repo"
           
           # Check if the repository exists and is accessible
           if ! gh repo view "$target_repo" >/dev/null 2>&1; then
@@ -135,28 +177,28 @@ jobs:
               exit 0
             fi
             
-            # Get the latest run for this workflow with error handling
-            if ! status=$(gh run list --workflow changelog.yml --limit 1 --json status -q '.[0].status' --repo "$target_repo" --ref main 2>/dev/null); then
-              echo "::warning::Attempt $attempt/$max_attempts: Could not find workflow '$workflow_name' or no runs exist yet. Checking again..."
+            # Get the latest run for this workflow using the workflow ID
+            if ! status=$(gh run list --workflow "$workflow_id" --limit 1 --json status -q '.[0].status' --repo "$target_repo" --ref main 2>/dev/null); then
+              echo "::warning::Attempt $attempt/$max_attempts: Could not find workflow '$workflow_name' (ID: $workflow_id) or no runs exist yet. Checking again..."
               sleep 10
               continue
             fi
             
-            if ! conclusion=$(gh run list --workflow changelog.yml --limit 1 --json conclusion -q '.[0].conclusion' --repo "$target_repo" --ref main 2>/dev/null); then
-              echo "::warning::Attempt $attempt/$max_attempts: Could not get conclusion for workflow '$workflow_name'. Checking again..."
+            if ! conclusion=$(gh run list --workflow "$workflow_id" --limit 1 --json conclusion -q '.[0].conclusion' --repo "$target_repo" --ref main 2>/dev/null); then
+              echo "::warning::Attempt $attempt/$max_attempts: Could not get conclusion for workflow '$workflow_name' (ID: $workflow_id). Checking again..."
               sleep 10
               continue
             fi
             
             if [ "$status" = "completed" ]; then
               if [ "$conclusion" != "success" ]; then
-                echo "::error::Workflow $workflow_name failed with conclusion: $conclusion"
+                echo "::error::Workflow $workflow_name (ID: $workflow_id) failed with conclusion: $conclusion"
                 exit 1
               fi
-              echo "✅ Workflow $workflow_name completed successfully"
+              echo "✅ Workflow $workflow_name (ID: $workflow_id) completed successfully"
               break
             fi
             
-            echo "⏳ Attempt $attempt/$max_attempts: Workflow $workflow_name is still running (status: $status). Waiting..."
+            echo "⏳ Attempt $attempt/$max_attempts: Workflow $workflow_name (ID: $workflow_id) is still running (status: $status). Waiting..."
             sleep 10
           done
