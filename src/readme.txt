@@ -5,7 +5,7 @@ Donate link: https://translentor.com/contact/
 Tags: translate elementor, elementor translator, automatic translation, ai translation
 Requires at least: 4.0
 Tested up to: 6.4.3
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -115,6 +115,15 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 8. Elementor Reset Password Widget
 
 == Changelog ==
+
+ = 1.6.2 (2025-07-17) =
+
+ __Added__
+ * list of added features
+
+ __Changed__
+ * list of changes that already existing implementation
+
 
 = 1.6.1 (2024-11-11) =
 
