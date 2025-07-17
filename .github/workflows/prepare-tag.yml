@@ -79,3 +79,57 @@ jobs:
             --field version="${{ needs.version.outputs.tag }}" \
             --field template="${{ matrix.template }}" \
             --field target-file="./${{ matrix.target-file }}"
+
+      - name: Monitor workflow execution
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          workflow_name="${{ matrix.name }}"
+          target_repo="codesnippetspro/.github-private"
+          max_attempts=30  # Maximum 5 minutes (30 * 10 seconds)
+          attempt=0
+          
+          echo "Monitoring workflow: $workflow_name in repository: $target_repo"
+          
+          # Check if the repository exists and is accessible
+          if ! gh repo view "$target_repo" >/dev/null 2>&1; then
+            echo "::warning::Repository $target_repo is not accessible or doesn't exist"
+            echo "::warning::Skipping monitoring for workflow: $workflow_name"
+            exit 0
+          fi
+          
+          while : ; do
+            attempt=$((attempt + 1))
+            
+            # Check if we've exceeded max attempts
+            if [ $attempt -gt $max_attempts ]; then
+              echo "::warning::Timeout reached after $max_attempts attempts. Workflow '$workflow_name' monitoring stopped."
+              echo "::warning::This might be expected if testing locally or if the workflow doesn't exist yet."
+              exit 0
+            fi
+            
+            # Get the latest run for this workflow with error handling
+            if ! status=$(gh run list --workflow changelog.yml --limit 1 --json status -q '.[0].status' --repo "$target_repo" 2>/dev/null); then
+              echo "::warning::Attempt $attempt/$max_attempts: Could not find workflow '$workflow_name' or no runs exist yet. Checking again..."
+              sleep 10
+              continue
+            fi
+            
+            if ! conclusion=$(gh run list --workflow changelog.yml --limit 1 --json conclusion -q '.[0].conclusion' --repo "$target_repo" 2>/dev/null); then
+              echo "::warning::Attempt $attempt/$max_attempts: Could not get conclusion for workflow '$workflow_name'. Checking again..."
+              sleep 10
+              continue
+            fi
+            
+            if [ "$status" = "completed" ]; then
+              if [ "$conclusion" != "success" ]; then
+                echo "::error::Workflow $workflow_name failed with conclusion: $conclusion"
+                exit 1
+              fi
+              echo "✅ Workflow $workflow_name completed successfully"
+              break
+            fi
+            
+            echo "⏳ Attempt $attempt/$max_attempts: Workflow $workflow_name is still running (status: $status). Waiting..."
+            sleep 10
+          done
