@@ -79,7 +79,7 @@ jobs:
             echo "::warning::Repository $target_repo is not accessible or doesn't exist"
             echo "::warning::Skipping changelog generation for ${{ matrix.name }}"
             echo "skip_monitoring=true" >> $GITHUB_OUTPUT
-            exit 0
+            exit 1
           fi
           
           # Check if the workflow exists
@@ -87,7 +87,7 @@ jobs:
             echo "::warning::Workflow 'changelog.yml' not found in $target_repo"
             echo "::warning::Skipping changelog generation for ${{ matrix.name }}"
             echo "skip_monitoring=true" >> $GITHUB_OUTPUT
-            exit 0
+            exit 1
           fi
           
           # Attempt to dispatch the workflow with error handling
