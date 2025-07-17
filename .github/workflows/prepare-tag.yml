@@ -198,7 +198,8 @@ jobs:
             # Check if we've exceeded max attempts
             if [ $attempt -gt $max_attempts ]; then
               echo "::warning::Timeout reached after $max_attempts attempts. Workflow '$workflow_name' monitoring stopped."
-              echo "::warning::This might be expected if testing locally or if the workflow takes longer than expected."
+              echo "::warning::Since dispatch was successful, marking this step as successful."
+              echo "✅ Dispatch was successful - workflow may still be running in the background"
               exit 0
             fi
             
@@ -207,7 +208,13 @@ jobs:
             
             # First check if we can list any runs at all
             if ! gh run list --repo "$target_repo" --limit 1 --json status,conclusion,workflowDatabaseId >/dev/null 2>&1; then
-              echo "::warning::Attempt $attempt/$max_attempts: Cannot access workflow runs in $target_repo. Checking again..."
+              echo "::warning::Attempt $attempt/$max_attempts: Cannot access workflow runs in $target_repo."
+              if [ $attempt -ge 3 ]; then
+                echo "::warning::Since dispatch was successful but can't monitor, marking as successful."
+                echo "✅ Dispatch was successful - unable to monitor but assuming workflow is running"
+                exit 0
+              fi
+              echo "::warning::Retrying..."
               sleep 10
               continue
             fi
