@@ -62,15 +62,15 @@ class translentor_elementor_widget extends \Elementor\Widget_Base
     
     public function get_style_depends() 
     {
-        return [ 'translentor-website-translentor' ];
+        return [ 'translentor-website-translator-css', 'translentor-website-translator-toast-css' ];
     }
     
     public function get_script_depends() 
     {
         return [ 
 			
-            'translentor-website-translentor',
-			'translentor-website-translentor-toast'
+            'translentor-website-translator-js',
+			'translentor-website-translator-toast-js'
             
         ];
     }
@@ -1527,10 +1527,9 @@ $languagename = array (
 );
 
 $selected = array();
-		if(get_option('google_translation')=='yes')
-		{
-			
-		?>
+
+// Render widget HTML (condition removed - widget now always renders when added to page)
+?>
 
 <div <?php echo $this->get_render_attribute_string( 'toast_title' ); ?>><?php echo esc_html($settings['toast_title']);?></div>
 <div <?php echo $this->get_render_attribute_string( 'toast_position' ); ?>><?php echo esc_html($settings['toast_position']);?></div>
@@ -2096,7 +2095,7 @@ jQuery('.drop').on('click', function() {
 	
 			
 		//	update_option('translentor_settings_elementor',$elementor_setting);
-		}
+		// Removed closing brace from google_translation check - widget now always renders
 
 
     }
