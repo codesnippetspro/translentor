@@ -75,7 +75,7 @@ jobs:
           # Dispatch the workflow with required parameters
           if ! gh workflow run "$workflow_file" \
             --repo "$target_repo" \
-            --ref v1.0.1 \
+            --ref main \
             --field repo="${{ github.repository }}" \
             --field branch="${{ github.ref_name }}" \
             --field tag="${{ needs.install.outputs.version }}" \
