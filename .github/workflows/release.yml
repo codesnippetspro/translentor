@@ -49,11 +49,10 @@ jobs:
 
   deploy:
     needs: [install, upload]
-    uses: codesnippetspro/.github-private/.github/workflows/publish_svn.yml@v1
+    uses: codesnippetspro/.github-private/.github/workflows/publish.yml@v1.0.1
     with:
       repo: ${{ github.repository }}
       branch: ${{ github.ref_name }}
       tag: ${{ needs.install.outputs.version}}
-      slug: translate-websites-translentor
       artifact_url: ${{ needs.upload.outputs.artifact_url }}
       artifact_name: ${{ needs.upload.outputs.artifact_name }}
