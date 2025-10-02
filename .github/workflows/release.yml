@@ -35,14 +35,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           artifact-ids: ${{ steps.artifact.outputs.id }}
-          path: ./dist
+          path: ./bundle
 
       - name: Create zip archive
         id: zip
         run: |
           zip_name="${{ needs.install.outputs.artifact_name }}.zip"
 
-          cd ./dist/${{ needs.install.outputs.artifact_name }}
+          cd ./bundle/${{ needs.install.outputs.artifact_name }}
           zip -r "../$zip_name" .
           cd ..
 
