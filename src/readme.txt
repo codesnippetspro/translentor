@@ -7,7 +7,7 @@ Tested up to: 6.8.3
 Requires PHP: 7.4
 Requires at least: 6.6
 Requires Plugins: elementor
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -117,6 +117,15 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 8. Elementor Reset Password Widget
 
 == Changelog ==
+
+ = 1.6.3 (2025-10-02) =
+
+ __Added__
+* Enhanced toast notifications for better user feedback
+
+ __Changed__
+* Clean up of commented-out code throughout the codebase for improved maintainability
+
 
  = 1.6.2 (2025-10-02) =
 

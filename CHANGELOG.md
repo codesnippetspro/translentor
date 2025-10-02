@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.3] (2025-10-02)
+
+### Added
+* Enhanced toast notifications to provide better user feedback (4c3dbfb)
+
+### Changed
+* Cleanup of commented-out code throughout the codebase to improve maintainability (d3b4455)
+
+### Fixed
+* Minor bug fixes and performance optimizations in codebase
+
 ## [1.6.2] (2025-10-02)
 
 ### Fixed
