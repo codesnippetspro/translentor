@@ -118,6 +118,16 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 
 == Changelog ==
 
+ = 1.6.3 (2025-10-02) =
+
+ __Added__
+* Enhanced toast notifications for better user feedback
+* Serena MCP support for managing project configurations
+
+ __Changed__
+* Clean up of commented-out code throughout the codebase for improved maintainability
+
+
  = 1.6.2 (2025-10-02) =
 
  __Fixed__
