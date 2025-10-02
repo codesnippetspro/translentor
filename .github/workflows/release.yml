@@ -4,6 +4,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   install:
     uses: ./.github/workflows/build.yml
@@ -50,6 +54,7 @@ jobs:
   deploy:
     needs: [install, upload]
     uses: codesnippetspro/.github-private/.github/workflows/publish.yml@v1.0.1
+    secrets: inherit
     with:
       repo: ${{ github.repository }}
       branch: ${{ github.ref_name }}
