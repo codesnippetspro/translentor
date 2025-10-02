@@ -116,13 +116,14 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 
 == Changelog ==
 
- = 1.6.2 (2025-07-17) =
+ = 1.6.2 (2025-10-02) =
 
- __Added__
- * list of added features
-
- __Changed__
- * list of changes that already existing implementation
+ __Fixed__
+ * Updated widget registration to use modern Elementor API for better compatibility with Elementor 3.x+
+ * Fixed widget asset dependency names to ensure proper CSS/JS loading
+ * Removed hidden database option check that prevented widget from rendering in some sites
+ * Improved widget rendering consistency across all Elementor-built pages
+ * Enhanced compatibility with latest Elementor versions
 
 
 = 1.6.1 (2024-11-11) =

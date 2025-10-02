@@ -1,18 +1,13 @@
 # Changelog
 
-## [1.6.2] (2025-07-17)
-
-### Added
-* list of added features with issue refs
-
-### Changed
-* list of changes that already existing implementation
-
-### Removed
-* optionally add this list of removed features
+## [1.6.2] (2025-10-02)
 
 ### Fixed
-* list of implemented fixes since the previous latest tag
+* Updated widget registration to use modern Elementor API (`elementor/widgets/register` hook instead of deprecated `elementor/widgets/widgets_registered`)
+* Fixed widget asset dependency names to match registered CSS/JS handles (resolved loading issues)
+* Removed buggy option check that prevented widget rendering in some cases
+* Ensured widget renders consistently when added to pages via Elementor editor
+* Improved widget compatibility with Elementor 3.x and newer versions
 
 ## [1.6.1] (2024-11-11)
 
