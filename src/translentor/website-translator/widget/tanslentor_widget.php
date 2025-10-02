@@ -30,6 +30,13 @@ class translentor_elementor_widget extends \Elementor\Widget_Base
 {
 	
 	protected $position;
+	
+	/**
+	 * Static flag to track if Google Translate script has been loaded
+	 * Prevents duplicate script loading when multiple widgets are on the same page
+	 */
+	private static $script_loaded = false;
+	
     public function __construct($data = [], $args = null) 
     {
         parent::__construct($data, $args);
@@ -1573,6 +1580,7 @@ $selected = array();
 								$location="right: 0px;
 		left: 0px;
 		text-align: center;";
+		$position='position: relative';
 		$class="t-footer-center-side";
 							}
 							$this->add_render_attribute(
@@ -1612,6 +1620,7 @@ $selected = array();
 								$location="right: 0px;
 		left: 0px;
 		text-align: center;";
+		$position='position: relative';
 		$class="t-footer-center-side";
 							}
 							$this->add_render_attribute(
@@ -1780,6 +1789,11 @@ $selected = array();
         </ul>
     </div>
 </div>
+<?php
+// Only load Google Translate script once per page (prevent duplicate loading when multiple widgets exist)
+if (!self::$script_loaded) {
+    self::$script_loaded = true;
+?>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
@@ -1796,6 +1810,9 @@ function googleTranslateElementInit() {
     console.log('Init');
 }
 </script>
+<?php
+}
+?>
 <script>
 jQuery('.drop_footer').on('click', function() {
     if (jQuery(this).attr('data-click-state') == 1) {
@@ -1852,6 +1869,7 @@ jQuery('.drop_footer').on('click', function() {
 											$location="right: 0px;
 					left: 0px;
 					text-align: center;";
+					$position='position: relative';
 					$class="t-center-side";
 										}
 							$this->add_render_attribute(
@@ -1890,6 +1908,7 @@ jQuery('.drop_footer').on('click', function() {
 								$location="right: 0px;
 		left: 0px;
 		text-align: center;";
+		$position='position: relative';
 		$class="t-center-side";
 							}
 							$this->add_render_attribute(
@@ -2053,6 +2072,11 @@ jQuery('.drop_footer').on('click', function() {
         </ul>
     </div>
 </div>
+<?php
+// Only load Google Translate script once per page (prevent duplicate loading when multiple widgets exist)
+if (!self::$script_loaded) {
+    self::$script_loaded = true;
+?>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
@@ -2069,6 +2093,9 @@ function googleTranslateElementInit() {
     console.log('Init');
 }
 </script>
+<?php
+}
+?>
 <script>
 jQuery('.drop').on('click', function() {
     if (jQuery(this).attr('data-click-state') == 1) {
