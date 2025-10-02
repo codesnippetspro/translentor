@@ -20,7 +20,7 @@ jobs:
     permissions:
       contents: write
     outputs:
-      artifact_url: ${{ steps.zip.outputs.path }}
+      artifact_url: ${{ steps.get_url.outputs.url }}
       artifact_name: ${{ needs.install.outputs.artifact_name }}
     steps:
       - name: Get artifact url
@@ -37,7 +37,7 @@ jobs:
           artifact-ids: ${{ steps.artifact.outputs.id }}
           path: ./dist
 
-      - name: Get artifact url
+      - name: Create zip archive
         id: zip
         run: |
           zip_name="${{ needs.install.outputs.artifact_name }}.zip"
@@ -49,9 +49,31 @@ jobs:
           echo "path=$(pwd)/$zip_name" >> $GITHUB_OUTPUT
 
       - name: Upload release asset
+        id: upload
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.zip.outputs.path }}
+
+      - name: Get release asset URL
+        id: get_url
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: ${{ needs.install.outputs.artifact_name }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Wait for release asset to be fully uploaded
+          sleep 5
+          
+          # Get the release asset download URL
+          asset_url=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${REPO}/releases/tags/${TAG_NAME}" \
+            --jq ".assets[] | select(.name == \"${ARTIFACT_NAME}.zip\") | .browser_download_url")
+          
+          echo "url=$asset_url" >> $GITHUB_OUTPUT
+          echo "::notice::Release asset URL: $asset_url"
 
   deploy:
     needs: [install, upload]
