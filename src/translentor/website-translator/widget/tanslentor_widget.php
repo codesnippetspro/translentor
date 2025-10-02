@@ -6,8 +6,6 @@
  * @package SMW
  */
 
-
-// Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Controls_Manager;
@@ -35,8 +33,6 @@ class translentor_elementor_widget extends \Elementor\Widget_Base
     public function __construct($data = [], $args = null) 
     {
         parent::__construct($data, $args);
-	
-		
     }
     
     public function get_name()
@@ -57,21 +53,21 @@ class translentor_elementor_widget extends \Elementor\Widget_Base
     public function get_categories()
     {
         return [ 'translentor-category' ];
-        //return [ 'general' ];
     }
     
     public function get_style_depends() 
     {
-        return [ 'translentor-website-translator-css', 'translentor-website-translator-toast-css' ];
+        return [ 
+          'translentor-website-translator-css', 
+          'translentor-website-translator-toast-css' 
+        ];
     }
     
     public function get_script_depends() 
     {
         return [ 
-			
-            'translentor-website-translator-js',
-			'translentor-website-translator-toast-js'
-            
+			    'translentor-website-translator-js',
+			    'translentor-website-translator-toast-js'
         ];
     }
     
