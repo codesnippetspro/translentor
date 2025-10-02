@@ -1,9 +1,16 @@
+/**
+ * Translentor Website Translator
+ * Google Translate integration and UI management
+ */
+
+// Initialize Google Translate on DOM load
 document.addEventListener('DOMContentLoaded', function () {
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT
         }, "google_translate_element");
 
+        // Clean up hash from URL if present
         var currentUrl = window.location.toString();
         if (currentUrl.indexOf("#") > 0) {
             var cleanUrl = currentUrl.substring(0, currentUrl.indexOf("#"));
@@ -28,316 +35,380 @@ document.addEventListener('DOMContentLoaded', function () {
     googleTranslateElementInit();
 });
 
-
-
+// Main translator functionality
 jQuery(document).ready(function () {
-    (toast_title = jQuery("#toast_title").text()),
-        (toast_position = jQuery("#toast_position").text()),
-        (toast_transition = jQuery("#toast_transition").text()),
-        (toasthide = jQuery("#toast-hide").text()),
-        (toast_text_color = jQuery("#toast_text_color").text()),
-        (toast_bg_color = jQuery("#toast_bg_color").text()),
-        (default_language = jQuery("#default_language").text()),
-        (language_style = jQuery("#language_style").text()),
-        console.log(default_language),
-        (myStorage = window.localStorage),
-        (myStroage1 = window.localStorage),
-        (myStorage2 = window.localStorage),
-        (selected_img_src = myStorage.getItem("img_src")),
-        (lang_name = myStorage2.getItem("lang_name")),
-        (check_onetime = myStroage1.getItem("check_onetime")),
-        (icon_position = jQuery("#position").text()),
-        (translate_style = jQuery("#style_icon").text());
-        if(myStorage.getItem("default_language") !=null && myStorage.getItem("default_language") != default_language){
-            console.log('changed'),
-            sessionStorage.removeItem('urlUpdated'),
-            myStorage.clear(),
-            myStroage1.clear(),
-            myStorage2.clear();
-        }
-    if (
-        null != lang_name
-    ) {
-        let e = lang_name;
-        if (
-            (console.log(myStroage1.getItem("check_onetime")),
-            "yes" == check_onetime &&
-                (jQuery.toast({
-                    position: toast_position,
-                    stack: !1,
-                    heading: toast_title,
-                    text: "You Have Translated Your Website To " + e,
-                    icon: "success",
-                    loader: !1,
-                    showHideTransition: toast_transition,
-                    hideAfter: toasthide,
-                    bgColor: toast_bg_color,
-                    textColor: toast_text_color,
-                }),
-                myStroage1.setItem("check_onetime", "no")),
-            console.log(selected_img_src),
-            "both" == translate_style || "both_short" == translate_style)
-        ) {
-            if ("right" == icon_position) {
-                jQuery(".drop i").remove(), jQuery(".drop_footer i").remove();
-                let o = lang_name;
-                console.log(o),
-                    jQuery(".drop").append("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                    jQuery(".drop_footer").append("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                    jQuery(".drop span").text(" " + o + " "),
-                    jQuery(".drop_footer span").text(" " + o + " ");
-            } else {
-                jQuery(".drop i").remove(), jQuery(".drop_footer i").remove();
-                let a = lang_name;
-                console.log(a),
-                    console.log("check point"),
-                    jQuery(".drop").prepend("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                    jQuery(".drop_footer").prepend("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                    jQuery(".drop span").text(" " + a + " "),
-                    jQuery(".drop_footer span").text(" " + a + " ");
-            }
-        } else if ("icon" == translate_style)
-            jQuery(".drop i").remove(),
-                jQuery(".drop_footer i").remove(),
-                jQuery(".drop").append("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                jQuery(".drop_footer").append("<img width='24' height='24' src='" + selected_img_src + "'/>");
-        else {
-            let r = lang_name;
-            jQuery(".drop span").text(" " + r + " "), jQuery(".drop_footer span").text(" " + r + " ");
-        }
-    } else if ((myStorage.clear(), console.log("rIGHT hERE"), (src = jQuery("#default_language_image").text()), myStorage.setItem("img_src", src),myStorage.setItem("default_language", default_language), null != (selected_img_src = (myStorage = window.localStorage).getItem("img_src")))) {
-        let i = selected_img_src.substring(selected_img_src.indexOf("flags/") + 6),
-            n = i.replace(".svg", " ");
-        console.log("ddd" + n);
-        if (!sessionStorage.getItem('urlUpdated')) {
-            console.log("Once"),
-         newUrl = window.location.href +  default_language,
+    // Toast configuration
+    var toastConfig = {
+        title: jQuery("#toast_title").text(),
+        position: jQuery("#toast_position").text(),
+        transition: jQuery("#toast_transition").text(),
+        hideAfter: jQuery("#toast-hide").text(),
+        textColor: jQuery("#toast_text_color").text(),
+        bgColor: jQuery("#toast_bg_color").text()
+    };
 
-        // Update the URL without reloading the page
-        history.pushState(null, '', newUrl),
+    // Widget configuration
+    var widgetConfig = {
+        defaultLanguage: jQuery("#default_language").text(),
+        defaultLanguageImage: jQuery("#default_language_image").text(),
+        languageStyle: jQuery("#language_style").text(),
+        iconPosition: jQuery("#position").text(),
+        translateStyle: jQuery("#style_icon").text()
+    };
 
-        // Reload the page
-        location.reload(),
-        
-        sessionStorage.setItem('urlUpdated', 'true');
-        }
-            "both" == translate_style || "both_short" == translate_style
-                ? "right" == icon_position
-                    ? (jQuery(".drop i").remove(),
-                      jQuery(".drop_footer i").remove(),
-                      jQuery(".drop").append("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                      jQuery(".drop_footer").append("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                      jQuery(".drop span").text(" " + n + " "),
-                      jQuery(".drop_footer span").text(" " + n + " "))
-                    : (jQuery(".drop i").remove(),
-                      jQuery(".drop_footer i").remove(),
-                      jQuery(".drop").prepend("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                      jQuery(".drop_footer").prepend("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                      jQuery(".drop span").text(" " + n + " "),
-                      jQuery(".drop_footer span").text(" " + n + " "))
-                : "icon" == translate_style
-                ? (jQuery(".drop i").remove(),
-                  jQuery(".drop_footer i").remove(),
-                  jQuery(".drop").append("<img width='24' height='24' src='" + selected_img_src + "'/>"),
-                  jQuery(".drop_footer").append("<img width='24' height='24' src='" + selected_img_src + "'/>"))
-                : (jQuery(".drop span").text(" " + n + " "), jQuery(".drop_footer span").text(" " + n + " "));
+    // LocalStorage references
+    var storage = {
+        main: window.localStorage,
+        langName: window.localStorage,
+        checkOneTime: window.localStorage
+    };
+
+    // Get stored values
+    var selectedImageSrc = storage.main.getItem("img_src");
+    var languageName = storage.langName.getItem("lang_name");
+    var checkOneTime = storage.checkOneTime.getItem("check_onetime");
+
+    console.log("Default Language:", widgetConfig.defaultLanguage);
+
+    // Check if default language has changed and clear storage if needed
+    if (storage.main.getItem("default_language") !== null && 
+        storage.main.getItem("default_language") !== widgetConfig.defaultLanguage) {
+        console.log('Default language changed, clearing storage');
+        sessionStorage.removeItem('urlUpdated');
+        storage.main.clear();
+        storage.checkOneTime.clear();
+        storage.langName.clear();
     }
-    
-        jQuery(document).on("click", "a.lang-select", function (e) {
-            myStorage.clear(), e.preventDefault();
-            var o = jQuery(this).attr("href"),
-                a = jQuery(this).children("img").attr("src"),
-                r = jQuery(this).children("img").attr("alt");
-            console.log(a),
-                myStorage.setItem("img_src", a),
-                myStorage.setItem("default_language", default_language),
-                myStorage2.setItem("lang_name", r),
-                myStroage1.setItem("check_onetime", "yes"),
-                jQuery(".ct-language__dropdown").css("overflow", "hidden"),
-                jQuery(".search").css("display", "none"),
-                jQuery(".progress-bar").css("display", "block"),
-                jQuery(".progress-bar").each(function () {
-                    var e = jQuery(this),
-                        o = e.attr("percent");
-                    e.css("width", o + "%"),
-                        jQuery({ animatedValue: 0 }).animate(
-                            { animatedValue: o },
-                            {
-                                duration: 2e3,
-                                step: function () {
-                                    e.attr("percent", Math.floor(this.animatedValue) + "%"), e.css("width", Math.floor(this.animatedValue) + "%");
-                                },
-                                complete: function () {
-                                    e.attr("percent", Math.floor(this.animatedValue) + "%"), e.css("width", Math.floor(this.animatedValue) + "%");
-                                },
-                            }
-                        );
-                }),
-                jQuery.ajax({
-                    url: o,
-                    type: "POST",
-                    cache: !1,
-                    success: function () {
-                        jQuery(".goog-te-combo").val(t),
-                            (window.location = o),
-                            (check_onetime = !0),
-                            setInterval(() => {
-                                jQuery(".progress-bar").css("display", "none"), window.location.reload(!0);
-                            }, 4e3);
-                    },
-                    error: function () {
-                        alert("Error Occure while Translating");
-                    },
-                });
-        }),
-        jQuery(document).on("click", "a.lang-select_footer", function (e) {
-            myStorage.clear(), e.preventDefault();
-            var o = jQuery(this).attr("href"),
-                a = jQuery(this).children("img").attr("src"),
-                r = jQuery(this).children("img").attr("alt");
-            console.log(a),
-                myStorage.setItem("img_src", a),
-                myStorage.setItem("default_language", default_language),
-                myStorage2.setItem("lang_name", r),
-                jQuery(".language_footer").css("overflow", "hidden"),
-                jQuery(".search_footer").css("display", "none"),
-                jQuery(".progress-bar_footer").css("display", "block"),
-                jQuery(".progress-bar_footer").each(function () {
-                    var e = jQuery(this),
-                        o = e.attr("percent");
-                    e.css("width", o + "%"),
-                        jQuery({ animatedValue: 0 }).animate(
-                            { animatedValue: o },
-                            {
-                                duration: 2e3,
-                                step: function () {
-                                    e.attr("percent", Math.floor(this.animatedValue) + "%"), e.css("width", Math.floor(this.animatedValue) + "%");
-                                },
-                                complete: function () {
-                                    e.attr("percent", Math.floor(this.animatedValue) + "%"), e.css("width", Math.floor(this.animatedValue) + "%");
-                                },
-                            }
-                        );
-                }),
-                jQuery.ajax({
-                    url: o,
-                    type: "POST",
-                    success: function () {
-                        jQuery(".goog-te-combo").val(t),
-                            (window.location = o),
-                            setInterval(() => {
-                                jQuery(".progress-bar_footer").css("display", "none"), window.location.reload();
-                            }, 4e3);
-                    },
-                    error: function () {
-                        alert("Error Occure while Translating");
-                    },
-                });
-        }),
-        (jQuery.fn.clickToggle = function (e, o) {
-            return this.on("click", function (a) {
-                [o, e][(this.$_io ^= 1)].call(this, a);
-            });
-        }),
-        jQuery(".drop").clickToggle(
-            function (e) {
-                jQuery(".ct-language__dropdown").css("overflow", "visible"), jQuery(".search").css("display", "block");
-            },
-            function (e) {
-                jQuery(".ct-language__dropdown").css("overflow", "hidden"), jQuery(".search").css("display", "none");
-            }
-        ),
-        jQuery(".drop_footer").clickToggle(
-            function (e) {
-                jQuery(".language_footer").css("overflow", "visible"), jQuery(".search_footer").css("display", "block");
-            },
-            function (e) {
-                jQuery(".language_footer").css("overflow", "hidden"), jQuery(".search_footer").css("display", "none");
-            }
-        ),
-        jQuery(function () {
-            jQuery("#search").keyup(function () {
-                if ("icon" === language_style) {
-                    if (0 !== jQuery(this).val().length) {
-                        var e = jQuery("ul#mydata").find(' li a:has(img[alt*="' + jQuery(this).val() + '"]) ');
-                        jQuery("li a", "ul#mydata")
-                            .not(e)
-                            .slideUp(function () {
-                                jQuery(".ct-language__dropdown li").css("padding", "0px 0px 0px 0px"), jQuery(".ct-language__dropdown").css("grid-template-columns", "repeat(1, 1fr)");
-                            }),
-                            e.slideDown(),
-                            console.log(e);
-                    } else {
-                        var e = jQuery("ul#mydata").find("li a:contains(" + jQuery(this).val() + ") ");
-                        jQuery("li a", "ul#mydata").not(e).slideUp(),
-                            e.slideDown(function () {
-                                jQuery(".ct-language__dropdown li").css("padding", ""), jQuery(".ct-language__dropdown").css("grid-template-columns", "");
-                            });
-                    }
-                } else {
-                    var e = jQuery("ul#mydata").find("li a:contains(" + jQuery(this).val() + ") ");
-                    jQuery("li a", "ul#mydata")
-                        .not(e)
-                        .slideUp(function () {
-                            jQuery(".ct-language__dropdown li").css("padding", "0px 0px 0px 0px"), jQuery(".ct-language__dropdown").css("grid-template-columns", "repeat(1, 1fr)");
-                        }),
-                        e.slideDown(function () {
-                            jQuery(".ct-language__dropdown li").css("padding", ""), jQuery(".ct-language__dropdown").css("grid-template-columns", "");
-                        }),
-                        console.log(e);
-                }
-            });
-        }),
-        jQuery(function () {
-            jQuery("#search_footer").keyup(function () {
-                if ("icon" === language_style) {
-                    if (0 !== jQuery(this).val().length) {
-                        var e = jQuery("ul#mydata_footer").find(' li a:has(img[alt*="' + jQuery(this).val() + '"]) ');
-                        jQuery("li a", "ul#mydata_footer")
-                            .not(e)
-                            .slideUp(function () {
-                                jQuery(".language_footer li").css("padding", "0px 0px 0px 0px"), jQuery(".language_footer").css("grid-template-columns", "repeat(1, 1fr)");
-                            }),
-                            e.slideDown(),
-                            console.log(e);
-                    } else {
-                        var e = jQuery("ul#mydata_footer").find("li a:contains(" + jQuery(this).val() + ") ");
-                        jQuery("li a", "ul#mydata_footer").not(e).slideUp(),
-                            e.slideDown(function () {
-                                jQuery(".language_footer li").css("padding", ""), jQuery(".language_footer").css("grid-template-columns", "");
-                            });
-                    }
-                } else {
-                    var e = jQuery("ul#mydata_footer").find("li a:contains(" + jQuery(this).val() + ") ");
-                    jQuery("li a", "ul#mydata_footer")
-                        .not(e)
-                        .slideUp(function () {
-                            jQuery(".language_footer li").css("padding", "0px 0px 0px 0px"), jQuery(".language_footer").css("grid-template-columns", "repeat(1, 1fr)");
-                        }),
-                        e.slideDown(function () {
-                            jQuery(".language_footer li").css("padding", ""), jQuery(".language_footer").css("grid-template-columns", "");
-                        }),
-                        console.log(e);
-                }
-            });
+
+    /**
+     * Show loading toast notification
+     */
+    function showLoadingToast() {
+        jQuery.toast({
+            position: toastConfig.position,
+            stack: false,
+            heading: 'Translating',
+            text: 'Translation is in progress, please wait...',
+            icon: 'info',
+            loader: true,
+            showHideTransition: toastConfig.transition,
+            hideAfter: false,
+            bgColor: toastConfig.bgColor,
+            textColor: toastConfig.textColor
         });
+    }
+
+    /**
+     * Show success toast notification
+     * @param {string} languageName - Name of the selected language
+     */
+    function showSuccessToast(languageName) {
+        jQuery.toast({
+            position: toastConfig.position,
+            stack: false,
+            heading: toastConfig.title,
+            text: "You Have Translated Your Website To " + languageName,
+            icon: "success",
+            loader: false,
+            showHideTransition: toastConfig.transition,
+            hideAfter: toastConfig.hideAfter,
+            bgColor: toastConfig.bgColor,
+            textColor: toastConfig.textColor
+        });
+    }
+
+    /**
+     * Update widget display with flag and language name
+     * @param {string} imageSrc - Source path of the flag image
+     * @param {string} langName - Name of the language
+     * @param {string} selector - CSS selector for the widget (.drop or .drop_footer)
+     */
+    function updateWidgetDisplay(imageSrc, langName, selector) {
+        var flagHtml = "<img width='24' height='24' src='" + imageSrc + "'/>";
+        
+        jQuery(selector + " i").remove();
+        
+        if (widgetConfig.translateStyle === "both" || widgetConfig.translateStyle === "both_short") {
+            if (widgetConfig.iconPosition === "right") {
+                jQuery(selector).append(flagHtml);
+                jQuery(selector + " span").text(" " + langName + " ");
+            } else {
+                jQuery(selector).prepend(flagHtml);
+                jQuery(selector + " span").text(" " + langName + " ");
+            }
+        } else if (widgetConfig.translateStyle === "icon") {
+            jQuery(selector).append(flagHtml);
+        } else {
+            jQuery(selector + " span").text(" " + langName + " ");
+        }
+    }
+
+    /**
+     * Animate progress bar
+     * @param {jQuery} progressBar - jQuery element of the progress bar
+     */
+    function animateProgressBar(progressBar) {
+        var targetPercent = progressBar.attr("percent");
+        progressBar.css("width", targetPercent + "%");
+        
+        jQuery({ animatedValue: 0 }).animate(
+            { animatedValue: targetPercent },
+            {
+                duration: 2000,
+                step: function () {
+                    var currentValue = Math.floor(this.animatedValue);
+                    progressBar.attr("percent", currentValue + "%");
+                    progressBar.css("width", currentValue + "%");
+                },
+                complete: function () {
+                    var finalValue = Math.floor(this.animatedValue);
+                    progressBar.attr("percent", finalValue + "%");
+                    progressBar.css("width", finalValue + "%");
+                }
+            }
+        );
+    }
+
+    /**
+     * Handle language selection and translation
+     * @param {string} translationUrl - URL for the translation
+     * @param {string} flagImageSrc - Source of the flag image
+     * @param {string} languageName - Name of the selected language
+     * @param {boolean} isFooter - Whether this is the footer widget
+     */
+    function handleLanguageSelection(translationUrl, flagImageSrc, languageName, isFooter) {
+        storage.main.clear();
+        
+        // Show loading toast
+        showLoadingToast();
+        
+        // Store selection in localStorage
+        storage.main.setItem("img_src", flagImageSrc);
+        storage.main.setItem("default_language", widgetConfig.defaultLanguage);
+        storage.langName.setItem("lang_name", languageName);
+        storage.checkOneTime.setItem("check_onetime", "yes");
+        
+        // Update UI based on widget type
+        var dropdownSelector = isFooter ? ".language_footer" : ".ct-language__dropdown";
+        var searchSelector = isFooter ? ".search_footer" : ".search";
+        var progressBarSelector = isFooter ? ".progress-bar_footer" : ".progress-bar";
+        
+        jQuery(dropdownSelector).css("overflow", "hidden");
+        jQuery(searchSelector).css("display", "none");
+        jQuery(progressBarSelector).css("display", "block");
+        
+        // Animate progress bar
+        jQuery(progressBarSelector).each(function () {
+            animateProgressBar(jQuery(this));
+        });
+        
+        // Make AJAX call for translation
+        jQuery.ajax({
+            url: translationUrl,
+            type: "POST",
+            cache: false,
+            success: function () {
+                jQuery(".goog-te-combo").val(translationUrl);
+                window.location = translationUrl;
+                checkOneTime = true;
+                
+                setTimeout(function() {
+                    jQuery(progressBarSelector).css("display", "none");
+                    window.location.reload(true);
+                }, 4000);
+            },
+            error: function () {
+                alert("Error occurred while translating");
+            }
+        });
+    }
+
+    // Initialize widget display if language is already selected
+    if (languageName !== null) {
+        console.log("Stored language found:", checkOneTime);
+        
+        // Show success toast if this is the first time after selection
+        if (checkOneTime === "yes") {
+            showSuccessToast(languageName);
+            storage.checkOneTime.setItem("check_onetime", "no");
+        }
+        
+        console.log("Selected image source:", selectedImageSrc);
+        
+        // Update both main and footer widgets
+        updateWidgetDisplay(selectedImageSrc, languageName, ".drop");
+        updateWidgetDisplay(selectedImageSrc, languageName, ".drop_footer");
+        
+    } else {
+        // Initialize with default language
+        storage.main.clear();
+        console.log("Initializing with default language");
+        
+        storage.main.setItem("img_src", widgetConfig.defaultLanguageImage);
+        storage.main.setItem("default_language", widgetConfig.defaultLanguage);
+        
+        selectedImageSrc = storage.main.getItem("img_src");
+        
+        if (selectedImageSrc !== null) {
+            // Extract language name from image path
+            var flagPath = selectedImageSrc.substring(selectedImageSrc.indexOf("flags/") + 6);
+            var defaultLangName = flagPath.replace(".svg", " ");
+            console.log("Default language name:", defaultLangName);
+            
+            // Update URL with default language (only once)
+            if (!sessionStorage.getItem('urlUpdated')) {
+                console.log("Updating URL with default language");
+                var newUrl = window.location.href + widgetConfig.defaultLanguage;
+                history.pushState(null, '', newUrl);
+                location.reload();
+                sessionStorage.setItem('urlUpdated', 'true');
+            }
+            
+            // Update both main and footer widgets
+            updateWidgetDisplay(selectedImageSrc, defaultLangName, ".drop");
+            updateWidgetDisplay(selectedImageSrc, defaultLangName, ".drop_footer");
+        }
+    }
+
+    // Event handler for main widget language selection
+    jQuery(document).on("click", "a.lang-select", function (event) {
+        event.preventDefault();
+        
+        var translationUrl = jQuery(this).attr("href");
+        var flagImageSrc = jQuery(this).children("img").attr("src");
+        var languageName = jQuery(this).children("img").attr("alt");
+        
+        console.log("Language selected:", flagImageSrc);
+        handleLanguageSelection(translationUrl, flagImageSrc, languageName, false);
+    });
+
+    // Event handler for footer widget language selection
+    jQuery(document).on("click", "a.lang-select_footer", function (event) {
+        event.preventDefault();
+        
+        var translationUrl = jQuery(this).attr("href");
+        var flagImageSrc = jQuery(this).children("img").attr("src");
+        var languageName = jQuery(this).children("img").attr("alt");
+        
+        console.log("Language selected (footer):", flagImageSrc);
+        handleLanguageSelection(translationUrl, flagImageSrc, languageName, true);
+    });
+
+    // Click toggle helper function
+    jQuery.fn.clickToggle = function (firstAction, secondAction) {
+        return this.on("click", function (event) {
+            [secondAction, firstAction][(this.$_io ^= 1)].call(this, event);
+        });
+    };
+
+    // Toggle main widget dropdown
+    jQuery(".drop").clickToggle(
+        function (event) {
+            jQuery(".ct-language__dropdown").css("overflow", "visible");
+            jQuery(".search").css("display", "block");
+        },
+        function (event) {
+            jQuery(".ct-language__dropdown").css("overflow", "hidden");
+            jQuery(".search").css("display", "none");
+        }
+    );
+
+    // Toggle footer widget dropdown
+    jQuery(".drop_footer").clickToggle(
+        function (event) {
+            jQuery(".language_footer").css("overflow", "visible");
+            jQuery(".search_footer").css("display", "block");
+        },
+        function (event) {
+            jQuery(".language_footer").css("overflow", "hidden");
+            jQuery(".search_footer").css("display", "none");
+        }
+    );
+
+    /**
+     * Filter language list based on search input
+     * @param {jQuery} searchInput - The search input element
+     * @param {string} listSelector - Selector for the language list
+     * @param {string} dropdownSelector - Selector for the dropdown container
+     */
+    function filterLanguageList(searchInput, listSelector, dropdownSelector) {
+        var searchValue = searchInput.val();
+        var matchedItems;
+        
+        if (widgetConfig.languageStyle === "icon") {
+            if (searchValue.length !== 0) {
+                matchedItems = jQuery(listSelector).find(' li a:has(img[alt*="' + searchValue + '"]) ');
+                jQuery("li a", listSelector)
+                    .not(matchedItems)
+                    .slideUp(function () {
+                        jQuery(dropdownSelector + " li").css("padding", "0px 0px 0px 0px");
+                        jQuery(dropdownSelector).css("grid-template-columns", "repeat(1, 1fr)");
+                    });
+                matchedItems.slideDown();
+            } else {
+                matchedItems = jQuery(listSelector).find("li a:contains(" + searchValue + ") ");
+                jQuery("li a", listSelector).not(matchedItems).slideUp();
+                matchedItems.slideDown(function () {
+                    jQuery(dropdownSelector + " li").css("padding", "");
+                    jQuery(dropdownSelector).css("grid-template-columns", "");
+                });
+            }
+        } else {
+            matchedItems = jQuery(listSelector).find("li a:contains(" + searchValue + ") ");
+            jQuery("li a", listSelector)
+                .not(matchedItems)
+                .slideUp(function () {
+                    jQuery(dropdownSelector + " li").css("padding", "0px 0px 0px 0px");
+                    jQuery(dropdownSelector).css("grid-template-columns", "repeat(1, 1fr)");
+                });
+            matchedItems.slideDown(function () {
+                jQuery(dropdownSelector + " li").css("padding", "");
+                jQuery(dropdownSelector).css("grid-template-columns", "");
+            });
+        }
+        
+        console.log("Filtered items:", matchedItems);
+    }
+
+    // Main widget search functionality
+    jQuery("#search").keyup(function () {
+        filterLanguageList(jQuery(this), "ul#mydata", ".ct-language__dropdown");
+    });
+
+    // Footer widget search functionality
+    jQuery("#search_footer").keyup(function () {
+        filterLanguageList(jQuery(this), "ul#mydata_footer", ".language_footer");
+    });
 });
-var t = jQuery(this).attr("data-lang");
-const element = document.querySelector("html");
-let prevState = element.classList.contains("translated-ltr");
-const observer = new MutationObserver((e) => {
-    e.forEach((e) => {
-        let { target: o } = e;
-        if ("class" === e.attributeName) {
-            let a = e.target.classList.contains("translated-ltr");
-            if (prevState !== a && "" !== (prevState = a)) {
-                var r = window.location.toString();
-                if (r.indexOf("#") > 0) {
-                    var i = r.substring(0, r.indexOf("#"));
-                    window.history.replaceState({}, document.title, i);
+
+// Global variable for data-lang attribute
+var translationDataLang = jQuery(this).attr("data-lang");
+
+// Monitor HTML class changes for translation state
+const htmlElement = document.querySelector("html");
+let previousTranslationState = htmlElement.classList.contains("translated-ltr");
+
+const translationObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+            let currentTranslationState = mutation.target.classList.contains("translated-ltr");
+            
+            if (previousTranslationState !== currentTranslationState && currentTranslationState !== "") {
+                previousTranslationState = currentTranslationState;
+                
+                // Clean up hash from URL
+                var currentUrl = window.location.toString();
+                if (currentUrl.indexOf("#") > 0) {
+                    var cleanUrl = currentUrl.substring(0, currentUrl.indexOf("#"));
+                    window.history.replaceState({}, document.title, cleanUrl);
                 }
             }
         }
     });
 });
-observer.observe(document.querySelector("html"), { attributes: !0, attributeOldValue: !0, attributeFilter: ["class"] });
+
+translationObserver.observe(htmlElement, { 
+    attributes: true, 
+    attributeOldValue: true, 
+    attributeFilter: ["class"] 
+});
