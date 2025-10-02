@@ -3,8 +3,10 @@ Owner: Code Snippets
 Contributors: codesnippetspro, bungeshea, ver3, lightbulbman, 0aksmith
 Donate link: https://translentor.com/contact/
 Tags: translate elementor, elementor translator, automatic translation, ai translation
-Requires at least: 4.0
-Tested up to: 6.4.3
+Tested up to: 6.8.3
+Requires PHP: 7.4
+Requires at least: 6.6
+Requires Plugins: elementor
 Stable tag: 1.6.2
 Requires PHP: 7.4
 License: GPLv2 or later
