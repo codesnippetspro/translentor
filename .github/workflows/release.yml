@@ -17,6 +17,8 @@ jobs:
   upload:
     needs: install
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       artifact_url: ${{ steps.zip.outputs.path }}
       artifact_name: ${{ needs.install.outputs.artifact_name }}
