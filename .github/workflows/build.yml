@@ -36,10 +36,14 @@ jobs:
         run: |
           echo "name=$(jq -r '.name | split("/") | .[-1]' composer.json)" >> $GITHUB_OUTPUT
           echo "version=$(composer get-version)" >> $GITHUB_OUTPUT
+          
+          # Create subdirectory structure
+          mkdir -p ./bundle/translentor
+          cp -r ./src/* ./bundle/translentor/
 
       - name: Upload
         id: artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.build.outputs.name }}
-          path: ./src
+          path: ./bundle
