@@ -30,12 +30,4 @@ class Module
 	{
 		return true;
 	}
-
-	/**
-	 * Constructor.
-	 */
-	public function __construct() 
-	{ // phpcs:ignore Generic.CodeAnalysis.UselessOverridingMethod.Found
-		//parent::__construct();
-	}
 }

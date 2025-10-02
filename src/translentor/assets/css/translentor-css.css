@@ -28,7 +28,6 @@ body {
 }
 .ct-topbar {
     text-align: right;
-/*     background: #eee; */
 }
 .ct-topbar__list {
     margin-bottom: 0;
@@ -65,7 +64,6 @@ body {
     right: auto;
     -webkit-transition: 0.15s ease-in-out;
     transition: 0.15s ease-in-out;
-/*     width: inherit !important; */
     text-align: center;
     padding-top: 0;
     z-index: 200;
@@ -110,7 +108,6 @@ body {
     border-bottom: 8px solid #ededed;
 }
 .ct-language {
-/*     position: absolute; */
     padding: 10px;
     background-color: #00000000;
   
@@ -190,7 +187,6 @@ body {
     background-color: transparent !important;
     box-shadow: none !important;
 }
-/* frontend CSS by Z */ 
 
 span.drop_footer {
     display: flex;
@@ -332,9 +328,6 @@ span.lang-text {
 span.lang-short-text {
     padding: 5px;
     
-}
-img.lang-img {
-/*     margin: 5px !important; */
 }
 li#both-left .lang-img,li#both-right .lang-img {
     margin: 4px;

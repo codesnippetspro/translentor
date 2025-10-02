@@ -121,8 +121,6 @@ jQuery(document).ready(function () {
         
         sessionStorage.setItem('urlUpdated', 'true');
         }
-        //  window.location.href =default_language,
-        //  window.location.reload(!0),
             "both" == translate_style || "both_short" == translate_style
                 ? "right" == icon_position
                     ? (jQuery(".drop i").remove(),
