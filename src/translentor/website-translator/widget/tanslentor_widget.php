@@ -6,8 +6,6 @@
  * @package SMW
  */
 
-
-// Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Controls_Manager;
@@ -32,11 +30,16 @@ class translentor_elementor_widget extends \Elementor\Widget_Base
 {
 	
 	protected $position;
+	
+	/**
+	 * Static flag to track if Google Translate script has been loaded
+	 * Prevents duplicate script loading when multiple widgets are on the same page
+	 */
+	private static $script_loaded = false;
+	
     public function __construct($data = [], $args = null) 
     {
         parent::__construct($data, $args);
-	
-		
     }
     
     public function get_name()
@@ -57,21 +60,21 @@ class translentor_elementor_widget extends \Elementor\Widget_Base
     public function get_categories()
     {
         return [ 'translentor-category' ];
-        //return [ 'general' ];
     }
     
     public function get_style_depends() 
     {
-        return [ 'translentor-website-translentor' ];
+        return [ 
+          'translentor-website-translator-css', 
+          'translentor-website-translator-toast-css' 
+        ];
     }
     
     public function get_script_depends() 
     {
         return [ 
-			
-            'translentor-website-translentor',
-			'translentor-website-translentor-toast'
-            
+			    'translentor-website-translator-js',
+			    'translentor-website-translator-toast-js'
         ];
     }
     
@@ -1527,10 +1530,7 @@ $languagename = array (
 );
 
 $selected = array();
-		if(get_option('google_translation')=='yes')
-		{
-			
-		?>
+?>
 
 <div <?php echo $this->get_render_attribute_string( 'toast_title' ); ?>><?php echo esc_html($settings['toast_title']);?></div>
 <div <?php echo $this->get_render_attribute_string( 'toast_position' ); ?>><?php echo esc_html($settings['toast_position']);?></div>
@@ -1580,6 +1580,7 @@ $selected = array();
 								$location="right: 0px;
 		left: 0px;
 		text-align: center;";
+		$position='position: relative';
 		$class="t-footer-center-side";
 							}
 							$this->add_render_attribute(
@@ -1619,6 +1620,7 @@ $selected = array();
 								$location="right: 0px;
 		left: 0px;
 		text-align: center;";
+		$position='position: relative';
 		$class="t-footer-center-side";
 							}
 							$this->add_render_attribute(
@@ -1787,6 +1789,11 @@ $selected = array();
         </ul>
     </div>
 </div>
+<?php
+// Only load Google Translate script once per page (prevent duplicate loading when multiple widgets exist)
+if (!self::$script_loaded) {
+    self::$script_loaded = true;
+?>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
@@ -1803,6 +1810,9 @@ function googleTranslateElementInit() {
     console.log('Init');
 }
 </script>
+<?php
+}
+?>
 <script>
 jQuery('.drop_footer').on('click', function() {
     if (jQuery(this).attr('data-click-state') == 1) {
@@ -1859,6 +1869,7 @@ jQuery('.drop_footer').on('click', function() {
 											$location="right: 0px;
 					left: 0px;
 					text-align: center;";
+					$position='position: relative';
 					$class="t-center-side";
 										}
 							$this->add_render_attribute(
@@ -1897,6 +1908,7 @@ jQuery('.drop_footer').on('click', function() {
 								$location="right: 0px;
 		left: 0px;
 		text-align: center;";
+		$position='position: relative';
 		$class="t-center-side";
 							}
 							$this->add_render_attribute(
@@ -2060,6 +2072,11 @@ jQuery('.drop_footer').on('click', function() {
         </ul>
     </div>
 </div>
+<?php
+// Only load Google Translate script once per page (prevent duplicate loading when multiple widgets exist)
+if (!self::$script_loaded) {
+    self::$script_loaded = true;
+?>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
@@ -2076,6 +2093,9 @@ function googleTranslateElementInit() {
     console.log('Init');
 }
 </script>
+<?php
+}
+?>
 <script>
 jQuery('.drop').on('click', function() {
     if (jQuery(this).attr('data-click-state') == 1) {
@@ -2093,12 +2113,6 @@ jQuery('.drop').on('click', function() {
 <?php
 			echo '<h6 style="color: transparent;background:  transparent; display:none;">hide</h6>';
 			}
-	
-			
-		//	update_option('translentor_settings_elementor',$elementor_setting);
-		}
-
-
     }
 	protected function content_template() {
 		?>

@@ -3,9 +3,11 @@ Owner: Code Snippets
 Contributors: codesnippetspro, bungeshea, ver3, lightbulbman, 0aksmith
 Donate link: https://translentor.com/contact/
 Tags: translate elementor, elementor translator, automatic translation, ai translation
-Requires at least: 4.0
-Tested up to: 6.4.3
-Stable tag: 1.6.1
+Tested up to: 6.8.3
+Requires PHP: 7.4
+Requires at least: 6.6
+Requires Plugins: elementor
+Stable tag: 1.6.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -115,6 +117,16 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 8. Elementor Reset Password Widget
 
 == Changelog ==
+
+ = 1.6.2 (2025-10-02) =
+
+ __Fixed__
+ * Updated widget registration to use modern Elementor API for better compatibility with Elementor 3.x+
+ * Fixed widget asset dependency names to ensure proper CSS/JS loading
+ * Removed hidden database option check that prevented widget from rendering in some sites
+ * Improved widget rendering consistency across all Elementor-built pages
+ * Enhanced compatibility with latest Elementor versions
+
 
 = 1.6.1 (2024-11-11) =
 

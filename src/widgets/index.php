@@ -1,18 +1,18 @@
 <?php
-use Elementor\Plugin;
 
-
-
-    // load_styles();
-    // load_scripts();
- 
-        add_action( 'elementor/widgets/widgets_registered', function() 
-            {
-               
-                    require_once translentor_DIR_Main . 'translentor/website-translator/widget.php';
-                
-            }
-		);
+/**
+ * Register Translentor Widget with Elementor
+ * Using modern Elementor API (elementor/widgets/register hook)
+ */
+add_action( 'elementor/widgets/register', function( $widgets_manager ) {
+    
+    // Load widget class file
+    require_once translentor_DIR_Main . 'translentor/website-translator/widget.php';
+    
+    // Register the widget with Elementor using modern API
+    $widgets_manager->register( new \translentor_elementor_widget() );
+    
+});
   
     //  function load_styles() 
     // {
