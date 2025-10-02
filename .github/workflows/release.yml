@@ -4,6 +4,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   install:
     uses: ./.github/workflows/build.yml
@@ -51,10 +55,45 @@ jobs:
 
   deploy:
     needs: [install, upload]
-    uses: codesnippetspro/.github-private/.github/workflows/publish.yml@v1.0.1
-    with:
-      repo: ${{ github.repository }}
-      branch: ${{ github.ref_name }}
-      tag: ${{ needs.install.outputs.version}}
-      artifact_url: ${{ needs.upload.outputs.artifact_url }}
-      artifact_name: ${{ needs.upload.outputs.artifact_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch publish workflow
+        env:
+          GH_TOKEN: ${{ secrets.CHANGELOG_PAT }}
+        run: |
+          target_repo="codesnippetspro/.github-private"
+          workflow_file="publish.yml"
+          
+          echo "::notice::Dispatching publish workflow..."
+          echo "   Repository: $target_repo"
+          echo "   Source Repo: ${{ github.repository }}"
+          echo "   Branch: ${{ github.ref_name }}"
+          echo "   Tag: ${{ needs.install.outputs.version }}"
+          echo "   Artifact URL: ${{ needs.upload.outputs.artifact_url }}"
+          echo "   Artifact Name: ${{ needs.upload.outputs.artifact_name }}"
+          
+          # Dispatch the workflow with required parameters
+          if ! gh workflow run "$workflow_file" \
+            --repo "$target_repo" \
+            --ref v1.0.1 \
+            --field repo="${{ github.repository }}" \
+            --field branch="${{ github.ref_name }}" \
+            --field tag="${{ needs.install.outputs.version }}" \
+            --field artifact_url="${{ needs.upload.outputs.artifact_url }}" \
+            --field artifact_name="${{ needs.upload.outputs.artifact_name }}"; then
+            echo "::error::Failed to dispatch publish workflow in $target_repo"
+            exit 1
+          fi
+          
+          echo "::notice::Successfully dispatched publish workflow"
+          
+          # Wait a moment for the run to be created
+          echo "Waiting for workflow run to be created..."
+          sleep 10
+          
+          # Get the workflow run URL for monitoring
+          if run_url=$(gh run list --repo "$target_repo" --workflow "$workflow_file" --limit 1 --json url -q '.[0].url' 2>/dev/null); then
+            echo "::notice::Monitor workflow progress at: $run_url"
+            echo "workflow_url=$run_url" >> $GITHUB_OUTPUT
+          fi
+
