@@ -54,7 +54,8 @@ jobs:
   deploy:
     needs: [install, upload]
     uses: codesnippetspro/.github-private/.github/workflows/publish.yml@v1.0.1
-    secrets: inherit
+    secrets:
+      GH_TOKEN: ${{ secrets.CHANGELOG_PAT }}
     with:
       repo: ${{ github.repository }}
       branch: ${{ github.ref_name }}
