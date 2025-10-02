@@ -1,5 +1,14 @@
 # Changelog
 
+
+## [1.6.3] (2025-10-02)
+
+### Added
+* list of added features with issue refs 
+
+### Fixed
+* list of implemented fixes since the previous latest tag
+
 ## [1.6.2] (2025-10-02)
 
 ### Fixed
