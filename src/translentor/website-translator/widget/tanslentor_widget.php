@@ -1527,8 +1527,6 @@ $languagename = array (
 );
 
 $selected = array();
-
-// Render widget HTML (condition removed - widget now always renders when added to page)
 ?>
 
 <div <?php echo $this->get_render_attribute_string( 'toast_title' ); ?>><?php echo esc_html($settings['toast_title']);?></div>
@@ -2092,12 +2090,6 @@ jQuery('.drop').on('click', function() {
 <?php
 			echo '<h6 style="color: transparent;background:  transparent; display:none;">hide</h6>';
 			}
-	
-			
-		//	update_option('translentor_settings_elementor',$elementor_setting);
-		// Removed closing brace from google_translation check - widget now always renders
-
-
     }
 	protected function content_template() {
 		?>
