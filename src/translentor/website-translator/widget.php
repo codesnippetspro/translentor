@@ -15,8 +15,8 @@ require_once plugin_dir_path( __FILE__ ) . 'widget/tanslentor_widget.php';
 
 
 
-class Module
-{
+class Module {
+
 
 	/**
 	 * Module should load or not.
@@ -26,8 +26,7 @@ class Module
 	 *
 	 * @return bool true|false.
 	 */
-	public static function is_enabled() 
-	{
+	public static function is_enabled() {
 		return true;
 	}
 }
