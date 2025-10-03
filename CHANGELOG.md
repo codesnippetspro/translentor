@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.4] - 2025-10-03
+
+### Added
+* Various improvements in UI feedback for end users (f7e2421)
+
+### Changed
+* Code formatting enhancements across multiple modules for consistency (e5879d3, bded28e, fc2efed, e4f4538)
+
+### Fixed
+* Improved CSS formatting for consistent style application (2caaa37, a87bc2f)
+
 ## [1.6.3] (2025-10-02)
 
 ### Added
