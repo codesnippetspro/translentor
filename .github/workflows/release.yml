@@ -36,12 +36,13 @@ jobs:
           artifact-ids: ${{ steps.artifact.outputs.id }}
           path: ./bundle
 
-      - name: Create zip archive
+      - name: Get artifact url
         id: zip
         run: |
-          zip_name="${{ needs.install.outputs.artifact_name }}.zip"
+          # zip filename format: <artifact_name>.<tag_name>.zip
+          zip_name="${{ needs.install.outputs.artifact_name }}.${{ github.event.release.tag_name }}.zip"
 
-          cd ./bundle/${{ needs.install.outputs.artifact_name }}
+          cd ./dist/${{ needs.install.outputs.artifact_name }}
           zip -r "../$zip_name" .
           cd ..
 
