@@ -117,6 +117,20 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 
 == Changelog ==
 
+ = 1.6.5 (2025-10-09) =
+
+ __Added__
+ * Configurable PHP version input and artifact ID output in build options
+
+ __Changed__
+ * Updated tag version retrieval to use package.json
+
+ __Fixed__
+ * Removed unnecessary blank lines for cleaner code
+ * Updated comment action to use codesnippetspro specific versioning
+ * Streamlined artifact handling and corrected zip archive creation path
+
+
  = 1.6.4 (2025-10-03) =
 
  __Added__
