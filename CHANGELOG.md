@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.5] - 2025-10-09
+
+### Added
+* Configurable PHP version input in build settings (e9abca3)
+
+### Fixed
+* Zip archive creation path and filename in release workflow corrected (67fc24c)
+
 ## [1.6.4] - 2025-10-03
 
 ### Added
