@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.5] - 2025-10-09
+
+### Added
+* Configurable PHP version input and artifact ID output in build setups (e9abca3)
+
+### Changed
+* Updated release job dependencies and streamlined artifact handling for efficiency (66a935c)
+* Code cleanup in translentor plugin files (8574f71)
+
+### Fixed
+* ZIP archive creation path and filename format in release workflows (67fc24c)
+* Tag version retrieval logic in workflow scripts to handle beta versions (729162c)
+* Removed duplicate PHP requirement entry in the readme document (fa5e54e)
+
 ## [1.6.4] - 2025-10-03
 
 ### Added
