@@ -33,7 +33,7 @@ jobs:
           fi
 
           if [ $INPUT_VERSION = "next" ]; then
-            CURR=$(jq -r .version package.json)
+            CURR=$(jq -r .version composer.json)
             BRANCH_NAME="${{ github.ref_name }}"
             
             # Check if branch name contains "beta"
