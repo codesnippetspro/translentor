@@ -20,8 +20,6 @@ define( 'translentor_category', 'Translator' );
 
 use Elementor\Plugin;
 
-
-
 function cyb_activation_redirect( $plugin ) {
 	if ( $plugin == plugin_basename( __FILE__ ) ) {
 		exit( wp_redirect( admin_url( 'admin.php?page=translentor-module' ) ) );
