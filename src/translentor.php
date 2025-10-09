@@ -4,7 +4,7 @@
  * Plugin Name: Translentor
  * Plugin URI: https://translentor.com
  * Description: This plugin adds a language translator widget to the Elementor Page Builder.
- * Version: 1.6.4
+ * Version: 1.6.5
  * Author: Code Snippets Pro
  * Author URI: https://translentor.com
  * Domain Path: translentor
@@ -13,7 +13,7 @@
 
 define( 'translentor_DIR_Main', plugin_dir_path( __FILE__ ) );
 define( 'translentor_URL', plugin_dir_url( __FILE__ ) );
-define( 'translentor_VERSION', '1.6.4' );
+define( 'translentor_VERSION', '1.6.5' );
 define( 'translentor_slug', 'translentor' );
 define( 'translentor_category_icon', 'fa fa-plug' );
 define( 'translentor_category', 'Translator' );
