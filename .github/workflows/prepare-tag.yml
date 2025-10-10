@@ -23,7 +23,7 @@ jobs:
       - name: Compute tag when input is 'next'
         if: ${{ github.event.inputs.version == 'next' }}
         id: compute
-        uses: codesnippetspro/.github/workflows/next_version.yml@main
+        uses: codesnippetspro/.github/.github/workflows/next_version.yml@main
         with:
           file_path: package.json
           ref_name: ${{ github.ref_name }}
