@@ -77,7 +77,7 @@ jobs:
             --field repo="${{ github.repository }}" \
             --field branch="${{ github.ref_name }}" \
             --field version="$version" \
-            --field readme_path="./src/readme.txt" \
+            --field readme_path="./src/readme.txt" ; then
             echo "::error::Failed to dispatch workflow '$workflow_file' in $target_repo"
             exit 1
           fi
