@@ -1,26 +1,9 @@
 # Changelog
 
 ## [1.6.5] - 2025-10-10
-Adds:
-- feat(build): add configurable PHP version input and artifact ID output
 
-Fixes:
-- fix(workflow): correct syntax for readme_path field in changelog dispatch step
-- fix(workflow): correct variable assignment syntax in prepare-tag.yml
-- fix(workflow): correct version output reference in changelog dispatch step
-- fix(workflow): correct variable assignment syntax in changelog dispatch step
-- fix(workflow): update file path in version job to use composer.json instead of package.json
-- fix(workflow): streamline version job by removing unnecessary steps and correcting version variable usage
-- fix(workflow): correct path for next version workflow in prepare-tag.yml
-- fix(workflow): refactor tag version computation and streamline changelog dispatch process
-- fix(workflow): update version retrieval to use composer.json instead of package.json
-- fix(workflow): update tag version retrieval to use package.json and handle beta versions
-- fix(translentor): remove unnecessary blank lines for cleaner code
-- fix(readme): remove duplicate PHP requirement and format changelog entries
-- fix(workflow): update comment action to use codesnippetspro version
-- fix(release): refactor job dependencies and streamline artifact handling
-- fix(release): correct zip archive creation path and filename format
-
+### Changed
+* Clean up of commented-out code throughout the codebase for improved maintainability
 
 ## [1.6.4] - 2025-10-03
 
