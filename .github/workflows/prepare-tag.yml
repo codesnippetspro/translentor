@@ -62,7 +62,7 @@ jobs:
         run: |
           target_repo="${{ steps.validate.outputs.target_repo }}"
           workflow_file="${{ steps.validate.outputs.workflow_file }}"
-          $version="${{ needs.version.outputs.tag || github.event.inputs.version }}"
+          $version="${{ needs.version.outputs.version }}"
           
           echo "::notice::Dispatching workflow '$workflow_file' to generate changelog and readme entries..."
           echo "   Calling repo: $target_repo"
