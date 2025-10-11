@@ -1,5 +1,12 @@
 # Changelog
 
+
+## [1.6.5] - 2025-10-11
+
+### Changed
+* 6 files modified across 20 commits
+* 1 PHP files updated
+
 ## [1.6.4] - 2025-10-03
 
 ### Added
