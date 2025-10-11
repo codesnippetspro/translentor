@@ -7,7 +7,7 @@ Tested up to: 6.8.3
 Requires PHP: 7.4
 Requires at least: 6.6
 Requires Plugins: elementor
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,6 +117,22 @@ Translentor is by far the easiest Wordpress Translation Plugin available. There 
 
 == Changelog ==
 
+
+
+= 1.6.5 2025-10-11 =
+
+__Changed__
+* Build workflow now accepts a PHP version input (default 8.3)
+* Release pipeline uses artifact_id directly for artifact downloads
+* Consolidated changelog/readme generation via a single reusable workflow
+* Version calculation moved to reusable workflow for consistency
+
+__Removed__
+* Release asset filename format changed to <artifact_name>.<tag>.zip; update any scripts relying on the old name
+
+__Fixed__
+* Fixed release downloads by replacing URL parsing with artifact_id
+* Avoided ambiguous release asset names by appending tag to zip filename
 
  = 1.6.4 (2025-10-03) =
 

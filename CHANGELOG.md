@@ -1,5 +1,24 @@
 # Changelog
 
+
+## [1.6.5] - 2025-10-11
+
+### Added
+* Build workflow now accepts a php input (default 8.3) to run builds against different PHP versions.
+* Automated generation of changelog and readme entries via centralized reusable workflow dispatch.
+
+### Changed
+* Replaced ad-hoc tag/version logic with reusable next_version workflow reading composer.json.
+* Added artifact_id to build outputs and propagated version output reliably across jobs.
+* Pull request comments now use a maintained codesnippetspro action for improved stability.
+
+### Removed
+* Release asset filename now includes the tag name (<artifact_name>.<tag_name>.zip); update any consuming scripts/tools.
+
+### Fixed
+* Release pipeline downloads artifacts by ID instead of parsing from URL, preventing fetch failures.
+* Zip creation step sets and exposes zip_name output consistently for subsequent steps.
+
 ## [1.6.4] - 2025-10-03
 
 ### Added
