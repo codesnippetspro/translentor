@@ -1,0 +1,44 @@
+name: Test Composer Commands
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-composer:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check if Composer is installed
+        run: |
+          echo "Checking for Composer installation..."
+          which composer || echo "Composer not found in PATH"
+      
+      - name: Get Composer version
+        run: |
+          echo "Getting Composer version..."
+          composer --version
+      
+      - name: Run composer set-version script
+        run: |
+          echo "Running composer set-version script..."
+          composer set-version
+      
+      - name: Gather PHP details
+        if: success()
+        run: |
+          echo "=== PHP Version ==="
+          php --version
+          echo ""
+          echo "=== PHP Configuration ==="
+          php -i | head -n 20
+          echo ""
+          echo "=== Loaded Extensions ==="
+          php -m
+          echo ""
+          echo "=== PHP Info Summary ==="
+          php -r "echo 'PHP Version: ' . phpversion() . PHP_EOL;"
+          php -r "echo 'Memory Limit: ' . ini_get('memory_limit') . PHP_EOL;"
+          php -r "echo 'Max Execution Time: ' . ini_get('max_execution_time') . PHP_EOL;"
