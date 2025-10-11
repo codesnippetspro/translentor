@@ -1,10 +1,5 @@
 # Changelog
 
-## [1.6.5] - 2025-10-10
-
-### Changed
-* Clean up of commented-out code throughout the codebase for improved maintainability
-
 ## [1.6.4] - 2025-10-03
 
 ### Added
