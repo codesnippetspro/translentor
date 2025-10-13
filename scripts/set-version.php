@@ -37,9 +37,11 @@ replaceInFile(__DIR__ . '/../src/translentor.php', [
     '/(Version:\s+|@version\s+)(\d+\.\d+[\w\.-]*)/m' => function($matches) use ($version) {
         return $matches[1] . $version;
     },
-    "/(define\(\s*'translentor_VERSION'\s*,\s*)'([\w\.-]+)'(\s*\))/m" => function($matches) use ($version) {
-      return $matches[1] . "'$version'" . $matches[3];
-    }
+        // Match: "public const VERSION = '1.6.4';"  (handles single/double quotes, spaces)
+        '/(public\s+const\s+VERSION\s*=\s*)([\'"\"])([0-9]+\.[0-9]+(?:[\.\w\-]*)?)(\2\s*;)/m' => function($matches) use ($version) {
+            // $matches: 1=prefix, 2=quote, 3=current version, 4=closing-quote+semicolon
+            return $matches[1] . $matches[2] . $version . $matches[4];
+        }
 ]);
 
 // Update src/readme.txt
