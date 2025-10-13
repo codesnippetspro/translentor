@@ -17,21 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! class_exists( 'Translentor' ) ) {
-    class Translentor {
-        public const DIR  = __DIR__ . DIRECTORY_SEPARATOR;
-        public const URL  = plugin_dir_url( __FILE__ );
-        public const VERSION = '1.6.4';
-        public const SLUG    = 'translentor';
-        public const CATEGORY_ICON = 'fa fa-plug';
-        public const CATEGORY      = 'Translator';
-
-        public static function widgets_index_path() {
-            return self::DIR . 'widgets' . DIRECTORY_SEPARATOR . 'index.php';
-        }
-    }
-}
-
 // Minimal PHP requirement (adjust if needed)
 if ( version_compare( PHP_VERSION, '7.4.0', '<' ) ) {
     add_action( 'admin_notices', function () {
@@ -45,6 +30,7 @@ function translentor_activate() {
     // flag used to redirect once after activation
     update_option( Translentor::SLUG . '_do_activation_redirect', 1 );
 }
+
 register_activation_hook( __FILE__, 'translentor_activate' );
 
 // On admin init, perform a safe redirect if the flag is present, then delete it.
@@ -63,6 +49,7 @@ function translentor_maybe_do_activation_redirect() {
         }
     }
 }
+
 add_action( 'admin_init', 'translentor_maybe_do_activation_redirect' );
 
 // Show admin notice if Elementor isn't active.
@@ -71,6 +58,7 @@ function translentor_admin_notice_elementor_missing() {
         ?><div class="notice notice-warning is-dismissible"><p><strong>Translentor:</strong> requires Elementor to be active. Please install and activate Elementor.</p></div><?php
     }
 }
+
 add_action( 'admin_notices', 'translentor_admin_notice_elementor_missing' );
 
 // Initialize plugin only when Elementor is available.
@@ -94,3 +82,23 @@ add_action( 'plugins_loaded', function () {
         require_once $widgets_index;
     }
 } );
+
+if ( class_exists( 'Translentor' ) ) {
+  return;
+}
+
+class Translentor {
+  public const DIR  = __DIR__ . DIRECTORY_SEPARATOR;
+  public const VERSION = '1.6.5';
+  public const SLUG    = 'translentor';
+  public const CATEGORY_ICON = 'fa fa-plug';
+  public const CATEGORY      = 'Translator';
+  
+  public static function widgets_index_path() {
+    return self::DIR . 'widgets' . DIRECTORY_SEPARATOR . 'index.php';
+  }
+
+  public static function url() {
+    return plugin_dir_url( __FILE__ );
+  }
+}
