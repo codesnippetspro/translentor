@@ -23,13 +23,13 @@ add_action(
 	function() {
 		wp_enqueue_style(
 			'translentor-website-translator-css',
-			Translentor::URL . 'translentor/assets/css/translentor-css.min.css',
+			Translentor::url() . 'translentor/assets/css/translentor-css.min.css',
 			array(),
 			Translentor::VERSION
 		);
 		wp_enqueue_style(
 			'translentor-website-translator-toast-css',
-			Translentor::URL . 'translentor/assets/css/jquery.toast.min.css',
+			Translentor::url() . 'translentor/assets/css/jquery.toast.min.css',
 			array(),
 			Translentor::VERSION
 		);
@@ -40,7 +40,7 @@ add_action(
 add_action(
 	'elementor/frontend/after_register_scripts',
 	function() {
-	wp_enqueue_script( 'translentor-website-translator-js', Translentor::URL . 'translentor/assets/js/translentor-js.js', array( 'jquery' ), '1.0.0', true );
-	wp_enqueue_script( 'translentor-website-translator-toast-js', Translentor::URL . 'translentor/assets/js/jquery.toast.min.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'translentor-website-translator-js', Translentor::url() . 'translentor/assets/js/translentor-js.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'translentor-website-translator-toast-js', Translentor::url() . 'translentor/assets/js/jquery.toast.min.js', array( 'jquery' ), '1.0.0', true );
 	}
 );
