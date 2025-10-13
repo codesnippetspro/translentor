@@ -74,70 +74,70 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 
 	protected function get_languages() {
 		return array(
-			'Afrikaans'           => __( 'Afrikaans', translentor_slug ),
-			'Albanian'            => __( 'Albanian', translentor_slug ),
-			'Arabic'              => __( 'Arabic', translentor_slug ),
-			'Azerbaijani'         => __( 'Azerbaijani', translentor_slug ),
-			'Bangla'              => __( 'Bangla', translentor_slug ),
-			'Basque'              => __( 'Basque', translentor_slug ),
-			'Belarusian'          => __( 'Belarusian', translentor_slug ),
-			'Bulgarian'           => __( 'Bulgarian', translentor_slug ),
-			'Catalan'             => __( 'Catalan', translentor_slug ),
-			'Chinese Simplified'  => __( 'Chinese Simplified', translentor_slug ),
-			'Chinese Traditional' => __( 'Chinese Traditional', translentor_slug ),
-			'Croatian'            => __( 'Croatian', translentor_slug ),
-			'Czech'               => __( 'Czech', translentor_slug ),
-			'Danish'              => __( 'Danish', translentor_slug ),
-			'Dutch'               => __( 'Dutch', translentor_slug ),
-			'English'             => __( 'English', translentor_slug ),
-			'Esperanto'           => __( 'Esperanto', translentor_slug ),
-			'Estonian'            => __( 'Estonian', translentor_slug ),
-			'Filipino'            => __( 'Filipino', translentor_slug ),
-			'Finnish'             => __( 'Finnish', translentor_slug ),
-			'French'              => __( 'French', translentor_slug ),
-			'Galician'            => __( 'Galician', translentor_slug ),
-			'Georgian'            => __( 'Georgian', translentor_slug ),
-			'German'              => __( 'German', translentor_slug ),
-			'Greek'               => __( 'Greek', translentor_slug ),
-			'Gujarati'            => __( 'Gujarati', translentor_slug ),
-			'Haitian Creole'      => __( 'Haitian Creole', translentor_slug ),
-			'Hebrew'              => __( 'Hebrew', translentor_slug ),
-			'Hindi'               => __( 'Hindi', translentor_slug ),
-			'Hungarian'           => __( 'Hungarian', translentor_slug ),
-			'Icelandic'           => __( 'Icelandic', translentor_slug ),
-			'Indonesian'          => __( 'Indonesian', translentor_slug ),
-			'Irish'               => __( 'Irish', translentor_slug ),
-			'Italian'             => __( 'Italian', translentor_slug ),
-			'Japanese'            => __( 'Japanese', translentor_slug ),
-			'Kannada'             => __( 'Kannada', translentor_slug ),
-			'Korean'              => __( 'Korean', translentor_slug ),
-			'Latin'               => __( 'Latin', translentor_slug ),
-			'Latvian'             => __( 'Latvian', translentor_slug ),
-			'Lithuanian'          => __( 'Lithuanian', translentor_slug ),
-			'Macedonian'          => __( 'Macedonian', translentor_slug ),
-			'Malay'               => __( 'Malay', translentor_slug ),
-			'Maltese'             => __( 'Maltese', translentor_slug ),
-			'Norwegian'           => __( 'Norwegian', translentor_slug ),
-			'Persian'             => __( 'Persian', translentor_slug ),
-			'Polish'              => __( 'Polish', translentor_slug ),
-			'Portugese'           => __( 'Portugese', translentor_slug ),
-			'Romanian'            => __( 'Romanian', translentor_slug ),
-			'Russian'             => __( 'Russian', translentor_slug ),
-			'Serbian'             => __( 'Serbian', translentor_slug ),
-			'Slovak'              => __( 'Slovak', translentor_slug ),
-			'Slovenian'           => __( 'Slovenian', translentor_slug ),
-			'Spanish'             => __( 'Spanish', translentor_slug ),
-			'Swahili'             => __( 'Swahili', translentor_slug ),
-			'Swedish'             => __( 'Swedish', translentor_slug ),
-			'Tamil'               => __( 'Tamil', translentor_slug ),
-			'Telugu'              => __( 'Telugu', translentor_slug ),
-			'Thai'                => __( 'Thai', translentor_slug ),
-			'Turkish'             => __( 'Turkish', translentor_slug ),
-			'Ukranian'            => __( 'Ukranian', translentor_slug ),
-			'Urdu'                => __( 'Urdu', translentor_slug ),
-			'Vietnamese'          => __( 'Vietnamese', translentor_slug ),
-			'Welsh'               => __( 'Welsh', translentor_slug ),
-			'Yiddish'             => __( 'Yiddish', translentor_slug ),
+			'Afrikaans'           => __( 'Afrikaans', Translentor::SLUG ),
+			'Albanian'            => __( 'Albanian', Translentor::SLUG ),
+			'Arabic'              => __( 'Arabic', Translentor::SLUG ),
+			'Azerbaijani'         => __( 'Azerbaijani', Translentor::SLUG ),
+			'Bangla'              => __( 'Bangla', Translentor::SLUG ),
+			'Basque'              => __( 'Basque', Translentor::SLUG ),
+			'Belarusian'          => __( 'Belarusian', Translentor::SLUG ),
+			'Bulgarian'           => __( 'Bulgarian', Translentor::SLUG ),
+			'Catalan'             => __( 'Catalan', Translentor::SLUG ),
+			'Chinese Simplified'  => __( 'Chinese Simplified', Translentor::SLUG ),
+			'Chinese Traditional' => __( 'Chinese Traditional', Translentor::SLUG ),
+			'Croatian'            => __( 'Croatian', Translentor::SLUG ),
+			'Czech'               => __( 'Czech', Translentor::SLUG ),
+			'Danish'              => __( 'Danish', Translentor::SLUG ),
+			'Dutch'               => __( 'Dutch', Translentor::SLUG ),
+			'English'             => __( 'English', Translentor::SLUG ),
+			'Esperanto'           => __( 'Esperanto', Translentor::SLUG ),
+			'Estonian'            => __( 'Estonian', Translentor::SLUG ),
+			'Filipino'            => __( 'Filipino', Translentor::SLUG ),
+			'Finnish'             => __( 'Finnish', Translentor::SLUG ),
+			'French'              => __( 'French', Translentor::SLUG ),
+			'Galician'            => __( 'Galician', Translentor::SLUG ),
+			'Georgian'            => __( 'Georgian', Translentor::SLUG ),
+			'German'              => __( 'German', Translentor::SLUG ),
+			'Greek'               => __( 'Greek', Translentor::SLUG ),
+			'Gujarati'            => __( 'Gujarati', Translentor::SLUG ),
+			'Haitian Creole'      => __( 'Haitian Creole', Translentor::SLUG ),
+			'Hebrew'              => __( 'Hebrew', Translentor::SLUG ),
+			'Hindi'               => __( 'Hindi', Translentor::SLUG ),
+			'Hungarian'           => __( 'Hungarian', Translentor::SLUG ),
+			'Icelandic'           => __( 'Icelandic', Translentor::SLUG ),
+			'Indonesian'          => __( 'Indonesian', Translentor::SLUG ),
+			'Irish'               => __( 'Irish', Translentor::SLUG ),
+			'Italian'             => __( 'Italian', Translentor::SLUG ),
+			'Japanese'            => __( 'Japanese', Translentor::SLUG ),
+			'Kannada'             => __( 'Kannada', Translentor::SLUG ),
+			'Korean'              => __( 'Korean', Translentor::SLUG ),
+			'Latin'               => __( 'Latin', Translentor::SLUG ),
+			'Latvian'             => __( 'Latvian', Translentor::SLUG ),
+			'Lithuanian'          => __( 'Lithuanian', Translentor::SLUG ),
+			'Macedonian'          => __( 'Macedonian', Translentor::SLUG ),
+			'Malay'               => __( 'Malay', Translentor::SLUG ),
+			'Maltese'             => __( 'Maltese', Translentor::SLUG ),
+			'Norwegian'           => __( 'Norwegian', Translentor::SLUG ),
+			'Persian'             => __( 'Persian', Translentor::SLUG ),
+			'Polish'              => __( 'Polish', Translentor::SLUG ),
+			'Portugese'           => __( 'Portugese', Translentor::SLUG ),
+			'Romanian'            => __( 'Romanian', Translentor::SLUG ),
+			'Russian'             => __( 'Russian', Translentor::SLUG ),
+			'Serbian'             => __( 'Serbian', Translentor::SLUG ),
+			'Slovak'              => __( 'Slovak', Translentor::SLUG ),
+			'Slovenian'           => __( 'Slovenian', Translentor::SLUG ),
+			'Spanish'             => __( 'Spanish', Translentor::SLUG ),
+			'Swahili'             => __( 'Swahili', Translentor::SLUG ),
+			'Swedish'             => __( 'Swedish', Translentor::SLUG ),
+			'Tamil'               => __( 'Tamil', Translentor::SLUG ),
+			'Telugu'              => __( 'Telugu', Translentor::SLUG ),
+			'Thai'                => __( 'Thai', Translentor::SLUG ),
+			'Turkish'             => __( 'Turkish', Translentor::SLUG ),
+			'Ukranian'            => __( 'Ukranian', Translentor::SLUG ),
+			'Urdu'                => __( 'Urdu', Translentor::SLUG ),
+			'Vietnamese'          => __( 'Vietnamese', Translentor::SLUG ),
+			'Welsh'               => __( 'Welsh', Translentor::SLUG ),
+			'Yiddish'             => __( 'Yiddish', Translentor::SLUG ),
 		);
 	}
 
@@ -165,14 +165,14 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'translentor_nav_options',
 			array(
-				'label' => __( 'Translentor Nav Options', translentor_slug ),
+				'label' => __( 'Translentor Nav Options', Translentor::SLUG ),
 			)
 		);
 
 		$this->add_responsive_control(
 			'nav_columns',
 			array(
-				'label'     => __( 'Nav Columns', translentor_slug ),
+				'label'     => __( 'Nav Columns', Translentor::SLUG ),
 				'type'      => Controls_Manager::SLIDER,
 
 				'range'     => array(
@@ -205,13 +205,13 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'nav_style_location',
 			array(
-				'label'   => __( 'Alignment', translentor_slug ),
+				'label'   => __( 'Alignment', Translentor::SLUG ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => array(
-					'left'  => __( 'Right', translentor_slug ),
-					'right' => __( 'Left', translentor_slug ),
-					'none'  => __( 'Center', translentor_slug ),
+					'left'  => __( 'Right', Translentor::SLUG ),
+					'right' => __( 'Left', Translentor::SLUG ),
+					'none'  => __( 'Center', Translentor::SLUG ),
 				),
 			)
 		);
@@ -221,51 +221,51 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'translentor_toast',
 			array(
-				'label' => __( 'Translentor Notification', translentor_slug ),
+				'label' => __( 'Translentor Notification', Translentor::SLUG ),
 			)
 		);
 			$this->add_control(
 				'toast_title',
 				array(
-					'label'       => esc_html__( 'Title', translentor_slug ),
+					'label'       => esc_html__( 'Title', Translentor::SLUG ),
 					'type'        => \Elementor\Controls_Manager::TEXT,
-					'placeholder' => esc_html__( 'Website title here', translentor_slug ),
+					'placeholder' => esc_html__( 'Website title here', Translentor::SLUG ),
 				)
 			);
 			$this->add_control(
 				'toast_position',
 				array(
-					'label'   => esc_html__( 'Position', translentor_slug ),
+					'label'   => esc_html__( 'Position', Translentor::SLUG ),
 					'type'    => \Elementor\Controls_Manager::SELECT,
 					'default' => 'bottom-left',
 					'options' => array(
-						'bottom-left'   => esc_html__( 'Bottom Left', translentor_slug ),
-						'bottom-right'  => esc_html__( 'Bottom Right', translentor_slug ),
-						'bottom-center' => esc_html__( 'Bottom Center', translentor_slug ),
-						'top-left'      => esc_html__( 'Top Left', translentor_slug ),
-						'top-right'     => esc_html__( 'Top Right', translentor_slug ),
-						'top-center'    => esc_html__( 'Top Center', translentor_slug ),
-						'mid-center'    => esc_html__( 'Mid Center', translentor_slug ),
+						'bottom-left'   => esc_html__( 'Bottom Left', Translentor::SLUG ),
+						'bottom-right'  => esc_html__( 'Bottom Right', Translentor::SLUG ),
+						'bottom-center' => esc_html__( 'Bottom Center', Translentor::SLUG ),
+						'top-left'      => esc_html__( 'Top Left', Translentor::SLUG ),
+						'top-right'     => esc_html__( 'Top Right', Translentor::SLUG ),
+						'top-center'    => esc_html__( 'Top Center', Translentor::SLUG ),
+						'mid-center'    => esc_html__( 'Mid Center', Translentor::SLUG ),
 					),
 				)
 			);
 		$this->add_control(
 			'toast_transition',
 			array(
-				'label'   => esc_html__( 'showHideTransition', translentor_slug ),
+				'label'   => esc_html__( 'showHideTransition', Translentor::SLUG ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'fade',
 				'options' => array(
-					'fade'  => esc_html__( 'Fade', translentor_slug ),
-					'slide' => esc_html__( 'Slide', translentor_slug ),
-					'plain' => esc_html__( 'Plain', translentor_slug ),
+					'fade'  => esc_html__( 'Fade', Translentor::SLUG ),
+					'slide' => esc_html__( 'Slide', Translentor::SLUG ),
+					'plain' => esc_html__( 'Plain', Translentor::SLUG ),
 				),
 			)
 		);
 		$this->add_control(
 			'toast-hide',
 			array(
-				'label'   => esc_html__( 'HideAfter', translentor_slug ),
+				'label'   => esc_html__( 'HideAfter', Translentor::SLUG ),
 				'type'    => \Elementor\Controls_Manager::NUMBER,
 				'min'     => 1000,
 				'max'     => 10000,
@@ -276,7 +276,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'toast_text_color',
 			array(
-				'label' => esc_html__( 'Text Color', translentor_slug ),
+				'label' => esc_html__( 'Text Color', Translentor::SLUG ),
 				'type'  => \Elementor\Controls_Manager::COLOR,
 
 			)
@@ -284,7 +284,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'toast_bg_color',
 			array(
-				'label' => esc_html__( 'Background Color', translentor_slug ),
+				'label' => esc_html__( 'Background Color', Translentor::SLUG ),
 				'type'  => \Elementor\Controls_Manager::COLOR,
 
 			)
@@ -292,7 +292,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'label'    => esc_html__( 'Heading Typography', translentor_slug ),
+				'label'    => esc_html__( 'Heading Typography', Translentor::SLUG ),
 				'name'     => 'heading_typography',
 				'selector' => '{{WRAPPER}} .jq-toast-single h2',
 
@@ -307,16 +307,16 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'translentor_options',
 			array(
-				'label' => __( 'Translentor Options', translentor_slug ),
+				'label' => __( 'Translentor Options', Translentor::SLUG ),
 			)
 		);
 		$this->add_control(
 			'is_footer',
 			array(
-				'label'        => esc_html__( 'Footer', translentor_slug ),
+				'label'        => esc_html__( 'Footer', Translentor::SLUG ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Show', translentor_slug ),
-				'label_off'    => esc_html__( 'Hide', translentor_slug ),
+				'label_on'     => esc_html__( 'Show', Translentor::SLUG ),
+				'label_off'    => esc_html__( 'Hide', Translentor::SLUG ),
 				'return_value' => 'yes',
 				'default'      => 'no',
 			)
@@ -324,13 +324,13 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_style',
 			array(
-				'label'   => __( 'Choose Style', translentor_slug ),
+				'label'   => __( 'Choose Style', Translentor::SLUG ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'both',
 				'options' => array(
-					'icon' => __( 'Icon', translentor_slug ),
-					'text' => __( 'Text', translentor_slug ),
-					'both' => __( 'Icon + Text', translentor_slug ),
+					'icon' => __( 'Icon', Translentor::SLUG ),
+					'text' => __( 'Text', Translentor::SLUG ),
+					'both' => __( 'Icon + Text', Translentor::SLUG ),
 				),
 			)
 		);
@@ -338,12 +338,12 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'icon_position',
 			array(
-				'label'     => __( 'Icon Position', translentor_slug ),
+				'label'     => __( 'Icon Position', Translentor::SLUG ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
 				'default'   => 'left',
 				'options'   => array(
-					'left'  => __( 'Left', translentor_slug ),
-					'right' => __( 'Right', translentor_slug ),
+					'left'  => __( 'Left', Translentor::SLUG ),
+					'right' => __( 'Right', Translentor::SLUG ),
 				),
 				'condition' => array(
 					'translentor_style' => 'both',
@@ -353,7 +353,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'flags_size',
 			array(
-				'label'           => __( 'Icon Spacing', translentor_slug ),
+				'label'           => __( 'Icon Spacing', Translentor::SLUG ),
 				'type'            => Controls_Manager::SLIDER,
 				'size_units'      => array( 'px', 'em', '%' ),
 				'range'           => array(
@@ -396,7 +396,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_icon_heading',
 			array(
-				'label'     => __( 'Translentor Icon', translentor_slug ),
+				'label'     => __( 'Translentor Icon', Translentor::SLUG ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -408,7 +408,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_icon',
 			array(
-				'label'     => __( 'Icon', translentor_slug ),
+				'label'     => __( 'Icon', Translentor::SLUG ),
 				'type'      => Controls_Manager::ICONS,
 				'default'   => array(
 					'value'   => 'fas fa-globe',
@@ -423,7 +423,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'translentor_icon_size',
 			array(
-				'label'           => __( 'Icon SIze', translentor_slug ),
+				'label'           => __( 'Icon SIze', Translentor::SLUG ),
 				'type'            => Controls_Manager::SLIDER,
 				'size_units'      => array( 'px', 'em', '%' ),
 				'range'           => array(
@@ -467,7 +467,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_icon_color',
 			array(
-				'label'     => __( 'Icon Colour', translentor_slug ),
+				'label'     => __( 'Icon Colour', Translentor::SLUG ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 
 				'default'   => '#FFFFFF',
@@ -481,7 +481,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			$this->add_control(
 				'translentor_text_color',
 				array(
-					'label'     => __( 'Text Colour', translentor_slug ),
+					'label'     => __( 'Text Colour', Translentor::SLUG ),
 					'type'      => \Elementor\Controls_Manager::COLOR,
 
 					'default'   => '#FFFFFF',
@@ -496,7 +496,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_icon_color_hover',
 			array(
-				'label'     => __( 'Icon Colour Hover', translentor_slug ),
+				'label'     => __( 'Icon Colour Hover', Translentor::SLUG ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 
 				'default'   => '#1F69DE',
@@ -510,7 +510,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			$this->add_control(
 				'translentor_text_color_hover',
 				array(
-					'label'     => __( 'Text Colour Hover', translentor_slug ),
+					'label'     => __( 'Text Colour Hover', Translentor::SLUG ),
 					'type'      => \Elementor\Controls_Manager::COLOR,
 
 					'default'   => '#1F69DE',
@@ -531,7 +531,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'translentor_icon_padding',
 			array(
-				'label'      => __( 'Icon Padding', translentor_slug ),
+				'label'      => __( 'Icon Padding', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -554,7 +554,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_text_heading',
 			array(
-				'label'     => __( 'Translentor Text', translentor_slug ),
+				'label'     => __( 'Translentor Text', Translentor::SLUG ),
 				'type'      => Controls_Manager::HEADING,
 				'default'   => 'Translate',
 				'separator' => 'before',
@@ -567,10 +567,10 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'translentor_text',
 			array(
-				'label'       => __( 'Text', translentor_slug ),
+				'label'       => __( 'Text', Translentor::SLUG ),
 				'type'        => \Elementor\Controls_Manager::TEXT,
-				'default'     => __( 'Translate', translentor_slug ),
-				'placeholder' => __( 'Type your translentor text here', translentor_slug ),
+				'default'     => __( 'Translate', Translentor::SLUG ),
+				'placeholder' => __( 'Type your translentor text here', Translentor::SLUG ),
 				'condition'   => array(
 					'translentor_style!' => 'icon',
 				),
@@ -581,7 +581,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'translentor_text_typography',
-				'label'     => __( 'Text Typography', translentor_slug ),
+				'label'     => __( 'Text Typography', Translentor::SLUG ),
 
 				'selector'  => '{{WRAPPER}} .text-label',
 				'default'   => array(
@@ -616,22 +616,22 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'labguage_options',
 			array(
-				'label' => __( 'Language Options', translentor_slug ),
+				'label' => __( 'Language Options', Translentor::SLUG ),
 			)
 		);
 
 		$this->add_control(
 			'language_style',
 			array(
-				'label'   => __( 'Choose Style', translentor_slug ),
+				'label'   => __( 'Choose Style', Translentor::SLUG ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'icon',
 				'options' => array(
-					'icon'       => __( 'Icon', translentor_slug ),
-					'text'       => __( 'Text', translentor_slug ),
-					'short'      => __( 'ShortText', translentor_slug ),
-					'both'       => __( 'Icon + Text', translentor_slug ),
-					'both_short' => __( 'Icon + ShortText', translentor_slug ),
+					'icon'       => __( 'Icon', Translentor::SLUG ),
+					'text'       => __( 'Text', Translentor::SLUG ),
+					'short'      => __( 'ShortText', Translentor::SLUG ),
+					'both'       => __( 'Icon + Text', Translentor::SLUG ),
+					'both_short' => __( 'Icon + ShortText', Translentor::SLUG ),
 				),
 			)
 		);
@@ -639,7 +639,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'language_icon_heading',
 			array(
-				'label'     => __( 'Language Icon', translentor_slug ),
+				'label'     => __( 'Language Icon', Translentor::SLUG ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 				'condition' => array(
@@ -651,12 +651,12 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'language_icon_position',
 			array(
-				'label'     => __( 'Icon Position', translentor_slug ),
+				'label'     => __( 'Icon Position', Translentor::SLUG ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
 				'default'   => 'left',
 				'options'   => array(
-					'left'  => __( 'Left', translentor_slug ),
-					'right' => __( 'Right', translentor_slug ),
+					'left'  => __( 'Left', Translentor::SLUG ),
+					'right' => __( 'Right', Translentor::SLUG ),
 				),
 				'condition' => array(
 					'language_style' => array( 'both', 'both_short' ),
@@ -667,7 +667,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'choose_default_language',
 			array(
-				'label'       => __( 'Choose Default Language', translentor_slug ),
+				'label'       => __( 'Choose Default Language', Translentor::SLUG ),
 				'type'        => Controls_Manager::SELECT2,
 				'options'     => $this->get_languages(),
 				'default'     => 'English',
@@ -682,7 +682,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_countries',
 			array(
-				'label' => __( 'Countries', translentor_slug ),
+				'label' => __( 'Countries', Translentor::SLUG ),
 			)
 		);
 
@@ -691,7 +691,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			$repeater->add_control(
 				'choose_language',
 				array(
-					'label'       => __( 'Choose Language', translentor_slug ),
+					'label'       => __( 'Choose Language', Translentor::SLUG ),
 					'type'        => Controls_Manager::SELECT2,
 					'options'     => $this->get_languages(),
 					'default'     => 'English',
@@ -712,10 +712,10 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 					),
 					'default'      => array(
 						array(
-							'choose_language' => __( 'English', translentor_slug ),
+							'choose_language' => __( 'English', Translentor::SLUG ),
 						),
 						array(
-							'choose_language' => __( 'Spanish', translentor_slug ),
+							'choose_language' => __( 'Spanish', Translentor::SLUG ),
 						),
 
 					),
@@ -731,7 +731,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_lt_general',
 			array(
-				'label' => __( 'General', translentor_slug ),
+				'label' => __( 'General', Translentor::SLUG ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -740,8 +740,8 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'background',
-				'label'    => __( 'Background', translentor_slug ),
-				'types'    => array( 'classic', 'gradient', translentor_slug ),
+				'label'    => __( 'Background', Translentor::SLUG ),
+				'types'    => array( 'classic', 'gradient', Translentor::SLUG ),
 				'selector' => '{{WRAPPER}} .ct-language',
 			)
 		);
@@ -749,7 +749,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'section_lt_list_padding',
 			array(
-				'label'      => __( 'Country Padding', translentor_slug ),
+				'label'      => __( 'Country Padding', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 
@@ -762,7 +762,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'section_lt_dropdown_position',
 			array(
-				'label'      => __( 'Dropdown Positioning', translentor_slug ),
+				'label'      => __( 'Dropdown Positioning', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -778,7 +778,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'section_text_margin',
 			array(
-				'label'      => __( 'Text Margin', translentor_slug ),
+				'label'      => __( 'Text Margin', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -800,14 +800,14 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_processbar_style',
 			array(
-				'label' => __( 'Process Bar', translentor_slug ),
+				'label' => __( 'Process Bar', Translentor::SLUG ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 		$this->add_control(
 			'bar_background',
 			array(
-				'label'     => __( 'Background Colour', translentor_slug ),
+				'label'     => __( 'Background Colour', Translentor::SLUG ),
 				'type'      => Controls_Manager::COLOR,
 
 				'default'   => '#EDEDED00',
@@ -820,7 +820,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'bar_color',
 			array(
-				'label'     => __( 'Colour', translentor_slug ),
+				'label'     => __( 'Colour', Translentor::SLUG ),
 				'type'      => Controls_Manager::COLOR,
 
 				'default'   => '#1F5AB7',
@@ -836,7 +836,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_country_style',
 			array(
-				'label' => __( 'Countries', translentor_slug ),
+				'label' => __( 'Countries', Translentor::SLUG ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -844,7 +844,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'country_background',
 			array(
-				'label'     => __( 'Background Colour', translentor_slug ),
+				'label'     => __( 'Background Colour', Translentor::SLUG ),
 				'type'      => Controls_Manager::COLOR,
 
 				'default'   => '#191B2D',
@@ -857,7 +857,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'country_background_hover',
 			array(
-				'label'     => __( 'Background Hover Colour', translentor_slug ),
+				'label'     => __( 'Background Hover Colour', Translentor::SLUG ),
 				'type'      => Controls_Manager::COLOR,
 
 				'default'   => '#1F69DE',
@@ -869,7 +869,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'country_text_heading',
 			array(
-				'label'     => __( 'Country Text', translentor_slug ),
+				'label'     => __( 'Country Text', Translentor::SLUG ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -877,7 +877,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'country_text_width',
 			array(
-				'label'      => esc_html__( 'Width', translentor_slug ),
+				'label'      => esc_html__( 'Width', Translentor::SLUG ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'range'      => array(
@@ -914,7 +914,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'country_normal_color',
 			array(
-				'label'     => __( 'Colour', translentor_slug ),
+				'label'     => __( 'Colour', Translentor::SLUG ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FFFFFF',
 				'selectors' => array(
@@ -927,7 +927,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'hyperlink_normal_typography',
-				'label'    => __( 'Typography', translentor_slug ),
+				'label'    => __( 'Typography', Translentor::SLUG ),
 				'default'  => array(
 					'font_family' => 'Ubuntu',
 					'font_weight' => '600',
@@ -941,14 +941,14 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_tab(
 			'style_hover_tab',
 			array(
-				'label' => __( 'Hover', translentor_slug ),
+				'label' => __( 'Hover', Translentor::SLUG ),
 			)
 		);
 
 		$this->add_control(
 			'country_hover_color',
 			array(
-				'label'     => __( 'Colour', translentor_slug ),
+				'label'     => __( 'Colour', Translentor::SLUG ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#FFFFFF',
 				'selectors' => array(
@@ -961,7 +961,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'hyperlink_hover_typography',
-				'label'    => __( 'Typography', translentor_slug ),
+				'label'    => __( 'Typography', Translentor::SLUG ),
 				'default'  => array(
 					'font_family' => 'Ubuntu',
 					'font_weight' => '600',
@@ -981,7 +981,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_flags_style',
 			array(
-				'label' => __( 'Flags', translentor_slug ),
+				'label' => __( 'Flags', Translentor::SLUG ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -989,7 +989,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'country_flags_width',
 			array(
-				'label'           => __( 'Flag Width', translentor_slug ),
+				'label'           => __( 'Flag Width', Translentor::SLUG ),
 				'type'            => Controls_Manager::SLIDER,
 				'size_units'      => array( 'px', 'em', '%' ),
 				'range'           => array(
@@ -1029,7 +1029,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'country_flags_height',
 			array(
-				'label'           => __( 'Flag Height', translentor_slug ),
+				'label'           => __( 'Flag Height', Translentor::SLUG ),
 				'type'            => Controls_Manager::SLIDER,
 				'size_units'      => array( 'px', 'em', '%' ),
 				'range'           => array(
@@ -1070,7 +1070,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'flags_padding',
 			array(
-				'label'      => __( 'Padding', translentor_slug ),
+				'label'      => __( 'Padding', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
@@ -1082,7 +1082,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'flags_margins',
 			array(
-				'label'      => __( 'Margin', translentor_slug ),
+				'label'      => __( 'Margin', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -1101,14 +1101,14 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			array(
 				'name'     => 'border',
-				'label'    => esc_html__( 'Border', translentor_slug ),
+				'label'    => esc_html__( 'Border', Translentor::SLUG ),
 				'selector' => '{{WRAPPER}} .stiles-nav-align',
 			)
 		);
 		$this->add_responsive_control(
 			'dropdown_outer_border_radius',
 			array(
-				'label'      => __( 'Border Redius', translentor_slug ),
+				'label'      => __( 'Border Redius', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
@@ -1122,14 +1122,14 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_dropdown_outer_style',
 			array(
-				'label' => __( 'Label Styling', translentor_slug ),
+				'label' => __( 'Label Styling', Translentor::SLUG ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 		$this->add_responsive_control(
 			'dropdown_outer_padding',
 			array(
-				'label'      => __( 'Padding', translentor_slug ),
+				'label'      => __( 'Padding', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -1148,7 +1148,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'dropdown_outer_margin',
 			array(
-				'label'      => __( 'Margins', translentor_slug ),
+				'label'      => __( 'Margins', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -1170,7 +1170,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_dropdown_style',
 			array(
-				'label' => __( 'DropDown Styling', translentor_slug ),
+				'label' => __( 'DropDown Styling', Translentor::SLUG ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -1178,7 +1178,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'dropdown_list_padding',
 			array(
-				'label'      => __( 'Padding', translentor_slug ),
+				'label'      => __( 'Padding', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -1197,7 +1197,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'dropdown_list_margin',
 			array(
-				'label'      => __( 'Margins', translentor_slug ),
+				'label'      => __( 'Margins', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'default'    => array(
@@ -1216,7 +1216,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
 			'dropdown_dropdown_before_position',
 			array(
-				'label'      => __( 'Before Icon Position', translentor_slug ),
+				'label'      => __( 'Before Icon Position', Translentor::SLUG ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', '%' ),
 				'selectors'  => array(
@@ -1227,7 +1227,7 @@ class translentor_elementor_widget extends \Elementor\Widget_Base {
 			$this->add_control(
 				'dropdown_dropdown_before_color',
 				array(
-					'label'     => __( 'Before Icon Colour', translentor_slug ),
+					'label'     => __( 'Before Icon Colour', Translentor::SLUG ),
 					'type'      => Controls_Manager::COLOR,
 
 					'default'   => '#1F5AB7',
