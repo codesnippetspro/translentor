@@ -7,7 +7,7 @@ on:
 jobs:
   comment:
     if: contains(github.event.pull_request.labels.*.name, 'build')
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     outputs: 
       comment_id: ${{ steps.comment.outputs.comment-id }}
     steps:
@@ -27,7 +27,7 @@ jobs:
 
   publish:
     needs: ['comment', 'install']
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - name: Publish comment
         if: ${{ needs.install.outputs.artifact_name && needs.install.outputs.artifact_url }}
