@@ -16,7 +16,7 @@ jobs:
 
   upload:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     permissions:
       contents: write
     outputs:
@@ -50,7 +50,7 @@ jobs:
 
   deploy:
     needs: [build, upload]
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - name: Dispatch publish workflow
         env:

@@ -22,7 +22,7 @@ on:
         value: ${{ jobs.build.outputs.artifact_id }}
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     outputs:
       version: ${{ steps.build.outputs.version }}
       artifact_name: ${{ steps.build.outputs.name }}

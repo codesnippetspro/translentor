@@ -24,7 +24,7 @@ jobs:
 
   changelog:
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     needs: version
     steps:
       - name: Validate repository access
