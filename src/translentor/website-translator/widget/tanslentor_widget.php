@@ -23,10 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! session_id() && ! headers_sent() ) {
-	session_start();
-}
-
 class translentor_elementor_widget extends \Elementor\Widget_Base {
 
 
