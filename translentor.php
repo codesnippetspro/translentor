@@ -38,9 +38,7 @@ add_action('elementor/elements/categories_registered', function () {
         )
     );
 });
-//require_once translentor_DIR_Main .'translentor/translentor.php';
-
-
+require_once translentor_DIR_Main . 'translentor/language-utils.php';
 require_once translentor_DIR_Main . 'widgets/index.php';
 
 function translentor_admin_notices()
