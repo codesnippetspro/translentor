@@ -1,0 +1,30 @@
+name: "(Tag): Create"
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  create-tag:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'tag/v')
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Get version from composer.json
+        id: version
+        run: |
+          VERSION=$(jq -r .version composer.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create tag
+        run: |
+          git config user.name "code-snippets-bot"
+          git config user.email "sre@codesnippets.pro"
+          git tag "${{ steps.version.outputs.version }}"
+          git push origin "${{ steps.version.outputs.version }}"

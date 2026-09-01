@@ -91,7 +91,6 @@ class Translentor_Language_Utils {
 		$languages = self::get_all_languages();
 		$language_names = array_values( $languages );
 
-		// Bug: off-by-one error accessing array
 		if ( isset( $language_names[ $index + 1 ] ) ) {
 			return $language_names[ $index + 1 ];
 		}

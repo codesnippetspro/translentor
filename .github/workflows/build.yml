@@ -1,0 +1,56 @@
+name: "(Build): Plugin"
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        required: false
+        type: string
+        default: ${{ inputs.ref }}
+      php:
+        required: false
+        type: number
+        default: 8.3
+    outputs:
+      version:
+        value: ${{ jobs.build.outputs.version }}
+      artifact_name:
+        value: ${{ jobs.build.outputs.artifact_name }}
+      artifact_url:
+        value: ${{ jobs.build.outputs.artifact_url }}
+      artifact_id:
+        value: ${{ jobs.build.outputs.artifact_id }}
+jobs:
+  build:
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    outputs:
+      version: ${{ steps.build.outputs.version }}
+      artifact_name: ${{ steps.build.outputs.name }}
+      artifact_url: ${{ steps.artifacts.outputs.artifact-url }}
+      artifact_id: ${{ steps.artifacts.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ inputs.php }}"
+
+      - name: Install & Build
+        id: build
+        run: |
+          echo "name=$(jq -r '.name | split("/") | .[-1]' composer.json)" >> $GITHUB_OUTPUT
+          echo "version=$(composer get-version)" >> $GITHUB_OUTPUT
+          
+          # Create subdirectory structure
+          mkdir -p ./bundle/translentor
+          cp -r ./src/* ./bundle/translentor/
+
+      - name: Upload
+        id: artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.build.outputs.name }}
+          path: ./bundle
